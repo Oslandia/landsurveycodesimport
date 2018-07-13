@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="/plugins/LandSurveyFieldCodes">
+    <file>images/symbologyAdd.png</file>
+    <file>images/symbologyRemove.png</file>
+    <file>icon.png</file>
+  </qresource>
+</RCC>
