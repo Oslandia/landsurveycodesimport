@@ -1,0 +1,288 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Welcome to Land survey codes import’s documentation! &#8212; Land survey codes import 0.0.1 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="welcome-to-land-survey-codes-import-s-documentation">
+<h1>Welcome to Land survey codes import’s documentation!<a class="headerlink" href="#welcome-to-land-survey-codes-import-s-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="general-principle">
+<h2>General principle<a class="headerlink" href="#general-principle" title="Permalink to this headline">¶</a></h2>
+<p>The plugin works according to topography codification principles. The topographic department must first create a codification that will be used by operators in the field. On his field book, when he records a point, the operator will also enter a code. The operator has the possibility to survey several codes for the same point. This codified survey will allow the automatic generation of the drawing, with the possibility of pre-filling attributes that will be processed later. The GIS administrator will be able to link the import with other treatments thanks to the QGIS processing.</p>
+<p>The tool proposes to generate the following elements for each type of geometry:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="46%" />
+<col width="5%" />
+<col width="5%" />
+<col width="7%" />
+<col width="14%" />
+<col width="17%" />
+<col width="7%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Point</td>
+<td>Line</td>
+<td>Polygon</td>
+<td>Number of points</td>
+<td>Number of parameters</td>
+<td>Present</td>
+</tr>
+<tr class="row-even"><td>Circle by 2 points</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>2</td>
+<td>0</td>
+<td>Yes</td>
+</tr>
+<tr class="row-odd"><td>Circle by 3 points</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>3</td>
+<td>0</td>
+<td>Yes</td>
+</tr>
+<tr class="row-even"><td>Circle by centre and radius</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>1</td>
+<td>1</td>
+<td>Yes</td>
+</tr>
+<tr class="row-odd"><td>Circle by centre and diameter</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>1</td>
+<td>1</td>
+<td>Yes</td>
+</tr>
+<tr class="row-even"><td>Square by 2 points</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>2</td>
+<td>0</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>Square by 2 diagnoal points</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>2</td>
+<td>0</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>Rectangle by 2 points and height</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>2</td>
+<td>1</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>Rectangle by 3 points (3rd point = distance from 2nd point)</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>3</td>
+<td>0</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>Rectangle by 3 points (3rd point = orthogonal projection)</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>3</td>
+<td>0</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>Line*</td>
+<td>&#160;</td>
+<td>X</td>
+<td>X</td>
+<td>Minimum 2</td>
+<td>0</td>
+<td>Yes</td>
+</tr>
+<tr class="row-even"><td>Point</td>
+<td>X</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>1</td>
+<td>0</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="creation-of-the-codification">
+<h2>Creation of the codification<a class="headerlink" href="#creation-of-the-codification" title="Permalink to this headline">¶</a></h2>
+<p>The codification preparation cannot be done without first having opened a qgis project containing the layers in which the data will be inserted.
+For the times the layers must be in geopackages. There is no limit to the number of these geopackages. A good practice is to group the layers in thematic geopackages: water, sanitation, roads, etc.
+If the data is in a postgresql database, it is possible to export them in geopackages via the “Package layers” tool.</p>
+<p>By clicking on the icon <img alt="icon" src="_images/icon.png" />, the codification configuration window appears.</p>
+<p><img alt="codification" src="_images/codification.png" /></p>
+<div class="section" id="general-parameters">
+<h3>General parameters<a class="headerlink" href="#general-parameters" title="Permalink to this headline">¶</a></h3>
+<p>The general parameters define the separators used. A separator to indicate the different codes on the same point and a separator to indicate the parameters. These must be adapted according to the capacities of the field book.</p>
+</div>
+<div class="section" id="codification">
+<h3>Codification<a class="headerlink" href="#codification" title="Permalink to this headline">¶</a></h3>
+<p>“Code” can be alphanumeric, no restriction is imposed, but it must be compatible with your device. It is preferable not to insert spaces or special characters</p>
+<p>It is possible to add a comment on the code in the “Description” field.</p>
+<p>The “Geometry” is to be chosen from the one indicated above. It is filtered on the geometry of the “Output Layer” from the “GeoPackage” selected below.</p>
+</div>
+<div class="section" id="attributes">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h3>
+<p>You can automatically generate attributes in the layer columns using the same principles as the QGIS expression calculator.
+Attention, however, this one does not have vocation to accept complex requests, it is preferable to carry out this stage after the import of the data.</p>
+<p>If the exported data from the logbook has additional attributes, it is possible to integrate them by specifying in the expression field’_attN’ where N corresponds to the field number (starting with 1). There is no limitation on attributes as long as the CSV file is compliant.</p>
+</div>
+<div class="section" id="special-points">
+<h3>Special points<a class="headerlink" href="#special-points" title="Permalink to this headline">¶</a></h3>
+<p>Error points can be added in a particular layer as well as all points recorded.</p>
+<p>Items that do not conform to the coding rule, e.g. code with 3 points and only 2 points, etc., are called error.</p>
+</div>
+<div class="section" id="open-save">
+<h3>Open / Save<a class="headerlink" href="#open-save" title="Permalink to this headline">¶</a></h3>
+<p>The File menu allows opening, closing, saving, etc. of the codification.</p>
+<p>The codification is saved in a YAML format whose extension is.qlsc</p>
+<p><img alt="yaml" src="_images/yaml_file.png" /></p>
+</div>
+</div>
+<div class="section" id="points-import">
+<h2>Points import<a class="headerlink" href="#points-import" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>General principle<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>For now, the tool only allows CSV files to be read, so the operator must export his data in CSV format in this order:
+Point identifier, x coordinate, y coordinate, z coordinate, code, attribute 1, attribute 2,…, attribute N</p>
+<p><img alt="csv" src="_images/csv.png" /></p>
+<p>The tool will separate the codes that are on the same point, and then match them according to their code.
+For example a csv like:</p>
+<blockquote>
+<div><p>‘2’, ‘1980244.900’, ‘5190520.938’, ‘1002.461’, ‘300+200’</p>
+<p>‘3’, ‘1980249.438’, ‘5190515.953’, ‘1002.329’, ‘101’</p>
+<p>‘1’, ‘1980242.941’, ‘5190519.460’, ‘1002.521’, ‘200+300’</p>
+</div></blockquote>
+<p>will be transformed into:</p>
+<blockquote>
+<div><p>‘2’, ‘1980244.900’, ‘5190520.938’, ‘1002.461’, ‘300’</p>
+<p>‘2’, ‘1980244.900’, ‘5190520.938’, ‘1002.461’, ‘200’</p>
+<p>‘3’, ‘1980249.438’, ‘5190515.953’, ‘1002.329’, ‘101’</p>
+<p>‘1’, ‘1980242.941’, ‘5190519.460’, ‘1002.521’, ‘200’</p>
+<p>‘1’, ‘1980242.941’, ‘5190519.460’, ‘1002.521’, ‘300’</p>
+</div></blockquote>
+<p>and then:</p>
+<blockquote>
+<div><p>‘3’, ‘1980249.438’, ‘5190515.953’, ‘1002.329’, ‘101’</p>
+<p>‘2’, ‘1980244.900’, ‘5190520.938’, ‘1002.461’, ‘200’</p>
+<p>‘1’, ‘1980242.941’, ‘5190519.460’, ‘1002.521’, ‘200’</p>
+<p>‘2’, ‘1980244.900’, ‘5190520.938’, ‘1002.461’, ‘300’</p>
+<p>‘1’, ‘1980242.941’, ‘5190519.460’, ‘1002.521’, ‘300’</p>
+</div></blockquote>
+<p>The tool will process the codes in queue, special attention is requested to the operator entering the codes because an input error will delay the coding and the resulting drawing.</p>
+</div>
+<div class="section" id="processing-import">
+<h3>Processing import<a class="headerlink" href="#processing-import" title="Permalink to this headline">¶</a></h3>
+<p><img alt="processing" src="_images/processing.png" /></p>
+<p>The import is done via a new module in the processing.</p>
+<p>The tool asks for the configuration file (.qlsc file) and the points file (.csv)</p>
+<p><img alt="processing1" src="_images/processing1.png" /></p>
+</div>
+<div class="section" id="result">
+<h3>Result<a class="headerlink" href="#result" title="Permalink to this headline">¶</a></h3>
+<p>At the end of the import, you have to refresh the canvas to see the drawing. The data is obviously displayed with the style determined in the project.</p>
+<p><img alt="result" src="_images/result.png" /></p>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Loïc Bartoletti (Oslandia).
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
