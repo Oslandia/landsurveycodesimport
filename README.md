@@ -65,4 +65,4 @@ Une fois le traitement réalisé, vous pouvez raffraîchir la carte pour admirer
 
 ![result](./help/source/_static/result.png)
 
-Voir la [documentation](https://htmlpreview.github.io/?https://github.com/Oslandia/landsurveycodesimport/blob/master/help/htmlfr/html/index.html) pour plus de détails
+Voir la [documentation](https://htmlpreview.github.io/?https://github.com/Oslandia/landsurveycodesimport/blob/master/help/html/fr/html/index.html) pour plus de détails
