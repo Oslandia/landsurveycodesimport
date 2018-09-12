@@ -1,3 +1,12 @@
-#!/bin/sh
-gmake -e SPHINXOPTS="-D language='fr'" -e BUILDDIR="fr" html
-gmake -e SPHINXOPTS="-D language='en'" -e BUILDDIR="en" html
+#!/usr/bin/env bash
+
+GNUMAKE="make"
+if [[ "${OSTYPE,,}" =~ bsd* ]] || [[ "$OSTYPE" =~ darwin* ]]; then
+    GNUMAKE="gmake"
+fi
+
+for LANG in $*
+do
+    ${GNUMAKE} -e SPHINXOPTS="-D language='${LANG}'" -e BUILDDIR="html/${LANG}" html
+done
+

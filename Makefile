@@ -27,6 +27,7 @@
 # default is no locales
 # LOCALES = af
 LOCALES = "fr"
+LANG := "en" ${LOCALES}
 
 # If locales are enabled, set the name of the lrelease binary on your system. If
 # you have trouble compiling the translations, you may have to specify the full path to
@@ -65,7 +66,7 @@ PEP8EXCLUDE=pydev,resources.py,conf.py,third_party,ui
 # Normally you would not need to edit below here
 #################################################
 
-HELP = help/build/html
+HELP = help/html
 
 PLUGIN_UPLOAD = $(c)/plugin_upload.py
 
@@ -109,13 +110,13 @@ deploy: compile doc
 	# The deploy  target only works on unix like operating system where
 	# the Python plugin directory is located at:
 	# $HOME/$(QGISDIR)/python/plugins
-	mkdir -p $(HOME)/$(QGISDIR)/python/plugins/$(PLUGINNAME)
+	mkdir -p $(HOME)/$(QGISDIR)/python/plugins/$(PLUGINNAME)/help
 	cp -vf $(PY_FILES) $(HOME)/$(QGISDIR)/python/plugins/$(PLUGINNAME)
 	cp -vf $(UI_FILES) $(HOME)/$(QGISDIR)/python/plugins/$(PLUGINNAME)
 	cp -vf $(COMPILED_RESOURCE_FILES) $(HOME)/$(QGISDIR)/python/plugins/$(PLUGINNAME)
 	cp -vf $(EXTRAS) $(HOME)/$(QGISDIR)/python/plugins/$(PLUGINNAME)
 	cp -vfr i18n $(HOME)/$(QGISDIR)/python/plugins/$(PLUGINNAME)
-	cp -vfr $(HELP) $(HOME)/$(QGISDIR)/python/plugins/$(PLUGINNAME)/help
+	cp -vfr $(HELP)/* $(HOME)/$(QGISDIR)/python/plugins/$(PLUGINNAME)/help
 	# Copy extra directories if any
 	#(foreach EXTRA_DIR,(EXTRA_DIRS), cp -R (EXTRA_DIR) (HOME)/(QGISDIR)/python/plugins/(PLUGINNAME)/;)
 
@@ -204,7 +205,7 @@ doc:
 	@echo "------------------------------------"
 	@echo "Building documentation using sphinx."
 	@echo "------------------------------------"
-	cd help; sh build.sh
+	cd help ; ./build.sh ${LANG}
 
 pylint:
 	@echo

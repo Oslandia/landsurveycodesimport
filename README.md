@@ -33,7 +33,7 @@ Once the treatment is complete, you can refresh the map to admire your work.
 
 ![result](./help/source/_static/result.png)
 
-See the [documentation](https://htmlpreview.github.io/?https://github.com/Oslandia/landsurveycodesimport/blob/master/help/en/html/index.html) for more détails
+See the [documentation](https://htmlpreview.github.io/?https://github.com/Oslandia/landsurveycodesimport/blob/master/help/html/en/html/index.html) for more détails
 
 ___
 <a name="FR"></a>
@@ -65,4 +65,4 @@ Une fois le traitement réalisé, vous pouvez raffraîchir la carte pour admirer
 
 ![result](./help/source/_static/result.png)
 
-Voir la [documentation](https://htmlpreview.github.io/?https://github.com/Oslandia/landsurveycodesimport/blob/master/help/fr/html/index.html) pour plus de détails
+Voir la [documentation](https://htmlpreview.github.io/?https://github.com/Oslandia/landsurveycodesimport/blob/master/help/htmlfr/html/index.html) pour plus de détails

@@ -20,8 +20,8 @@
  *                                                                         *
  ***************************************************************************/
 """
-from PyQt5.QtCore import QSettings, QTranslator, qVersion, QCoreApplication
-from PyQt5.QtGui import QIcon
+from PyQt5.QtCore import QSettings, QTranslator, qVersion, QCoreApplication, QUrl
+from PyQt5.QtGui import QIcon, QDesktopServices
 from PyQt5.QtWidgets import QAction
 
 # Initialize Qt resources from file resources.py
@@ -58,11 +58,11 @@ class LandSurveyFieldCodes:
         # initialize plugin directory
         self.plugin_dir = os.path.dirname(__file__)
         # initialize locale
-        locale = QSettings().value('locale/userLocale')[0:2]
+        self.locale = QSettings().value('locale/userLocale')[0:2]
         locale_path = os.path.join(
             self.plugin_dir,
             'i18n',
-            '{}.qm'.format(locale))
+            '{}.qm'.format(self.locale))
 
         if os.path.exists(locale_path):
             self.translator = QTranslator()
@@ -179,8 +179,16 @@ class LandSurveyFieldCodes:
             callback=self.run,
             parent=self.iface.mainWindow())
         
-        QgsApplication.processingRegistry().addProvider(self.provider)
+        icon_path = None
+        self.add_action(
+            icon_path,
+            text=self.tr(u"&Help"),
+            callback=self.doHelp,
+            add_to_toolbar=False,
+            parent=self.iface.mainWindow())
 
+        QgsApplication.processingRegistry().addProvider(self.provider)
+	
     def unload(self):
         """Removes the plugin menu item and icon from QGIS GUI."""
         for action in self.actions:
@@ -198,3 +206,7 @@ class LandSurveyFieldCodes:
         """Run method that performs all the real work"""
         # show the dialog
         self.dlg.show()
+
+    def doHelp(self):
+        help_file = "file://" + self.plugin_dir + "/help/" + self.locale + "/html/index.html"
+        QDesktopServices.openUrl(QUrl(help_file))

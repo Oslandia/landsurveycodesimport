@@ -16,8 +16,8 @@ email=loic.bartoletti@oslandia.com
 
 about=This plugin allows you to easily import data from a land survey (GPS or total station) to draw automatically in a database using a codification. Circle, rectangle, square, ellipse Continuous line, arcs, Multi code
 
-tracker=https://gitlab.com/lbartoletti/LandSurveyFieldCodes
-repository=https://gitlab.com/lbartoletti/LandSurveyFieldCodes
+tracker=https://github.com/oslandia/landsurveycodesimport
+repository=https://github.com/oslandia/landsurveycodesimport
 # End of mandatory metadata
 
 # Recommended items:
@@ -28,7 +28,7 @@ repository=https://gitlab.com/lbartoletti/LandSurveyFieldCodes
 # Tags are comma separated with spaces allowed
 tags=cad, database, circle, export, field, geocoding, geometry, point, polygon, polyline, processing, rectangle, vector, topography, land, survey, GPS, import
 
-homepage=https://gitlab.com/lbartoletti/LandSurveyFieldCodes
+homepage=https://github.com/oslandia/landsurveycodesimport
 category=Plugins
 icon=icon.png
 # experimental flag
