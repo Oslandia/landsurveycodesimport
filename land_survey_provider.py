@@ -38,9 +38,6 @@ class landsurveyProvider(QgsProcessingProvider):
     def __init__(self):
         QgsProcessingProvider.__init__(self)
 
-        # Load algorithms
-        self.alglist = [landsurveyAlgorithm()]
-
     def unload(self):
         """
         Unloads the provider. Any tear-down steps required by the provider
@@ -52,8 +49,7 @@ class landsurveyProvider(QgsProcessingProvider):
         """
         Loads all algorithms belonging to this provider.
         """
-        for alg in self.alglist:
-            self.addAlgorithm( alg )
+        self.addAlgorithm( landsurveyAlgorithm() )
 
     def id(self):
         """
