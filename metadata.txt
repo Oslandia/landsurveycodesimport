@@ -10,7 +10,7 @@
 name=Land Survey Codes Import
 qgisMinimumVersion=3.0
 description=This plugin allows you to easily import data from a land survey (GPS or total station) to draw automatically in a database using a codification (aka Field Codes).
-version=0.1
+version=0.1.1
 author=Loïc Bartoletti (Oslandia)
 email=loic.bartoletti@oslandia.com
 
@@ -23,7 +23,7 @@ repository=https://github.com/oslandia/landsurveycodesimport
 # Recommended items:
 
 # Uncomment the following line and add your changelog:
-# changelog=
+changelog=Fix incorrect ownership of algorithms in processing provider. Remove experimental flag
 
 # Tags are comma separated with spaces allowed
 tags=cad, database, circle, export, field, geocoding, geometry, point, polygon, polyline, processing, rectangle, vector, topography, land, survey, GPS, import
@@ -32,7 +32,7 @@ homepage=https://github.com/oslandia/landsurveycodesimport
 category=Plugins
 icon=icon.png
 # experimental flag
-experimental=True
+experimental=False
 
 # deprecated flag (applies to the whole plugin, not just a single version)
 deprecated=False
