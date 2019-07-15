@@ -22,7 +22,7 @@ The configuration file is a simple text file (in YAML format) that will be used 
 
 ## Import of points
 
-Nowadays, the plugin only reads point files in CSV format. This is often present on the devices. They must respect this layout: number,x,x,y,z,code,att1,att2 where number is the point number, x,y and z are the coordinates, code the code(s) on the point, att1,att2 and attn are the attributes that can be exported from your field book; there is no limit on the number of attributes.
+Nowadays, the plugin only reads point files in CSV format. This is often present on the devices. They must respect this layout: number,x,y,z,code,att1,att2,...,attn where number is the point number, x,y and z are the coordinates, code the code(s) on the point, att1,att2 and attn are the attributes that can be exported from your field book; there is no limit on the number of attributes.
 
 The import is done by selecting the codification file and the csv file
 
@@ -54,7 +54,7 @@ Le fichier de configuration est un simple fichier texte (au format YAML) qui ser
 
 ## Import des points
 
-À ce jour, le plugin ne sait lire que les fichiers de points au format CSV. Celui-ci est souvent présent sur les appareils. Ils devront respecter cette disposition : numéro,x,y,z,code,att1,att2 où numéro est le numéro du point, x,y et z sont les coordonnées, code le(s) code(s) sur le point, att1, att2 et attn sont les attributs pouvant être exportés de votre carnet de terrain ; il n'y a pas de limite sur le nombre d'attribut.
+À ce jour, le plugin ne sait lire que les fichiers de points au format CSV. Celui-ci est souvent présent sur les appareils. Ils devront respecter cette disposition : numéro,x,y,z,code,att1,att2,...,attn où numéro est le numéro du point, x,y et z sont les coordonnées, code le(s) code(s) sur le point, att1, att2 et attn sont les attributs pouvant être exportés de votre carnet de terrain ; il n'y a pas de limite sur le nombre d'attribut.
 
 L'import se fait en sélectionnant le fichier de codification et le fichier csv
 
