@@ -572,7 +572,7 @@ def landsurveyImport(FILE, QLSC):
                                  code['ParameterSeparator'])
     parseTable(table, error, code)
 
-    if code['AllPoints']['isChecked']:
+    if code['AllPoints']['isChecked'] and len(table) > 0:
         insertSpecialPoints(table, code['AllPoints']['Layer'])
-    if code['ErrorPoints']['isChecked']:
+    if code['ErrorPoints']['isChecked'] and len(error) > 0:
         insertSpecialPoints(error, code['ErrorPoints']['Layer'])
