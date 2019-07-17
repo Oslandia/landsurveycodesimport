@@ -1,0 +1,144 @@
+AllPoints:
+  Layer: ''
+  isChecked: false
+CodeSeparator: +
+Codification:
+  '100':
+    Attributes: []
+    Description: CircleFrom2points_center
+    GeometryType: Circle2Points
+    Layer: /home/lbartoletti/prog/Oslandia/landsurveycodesimport/test/test_geometries.gpkg|layername=point
+  '101':
+    Attributes: []
+    Description: CircleFrom2points_line
+    GeometryType: Circle2Points
+    Layer: /home/lbartoletti/prog/Oslandia/landsurveycodesimport/test/test_geometries.gpkg|layername=line
+  '102':
+    Attributes: []
+    Description: CircleFrom2points_polygon
+    GeometryType: Circle2Points
+    Layer: /home/lbartoletti/prog/Oslandia/landsurveycodesimport/test/test_geometries.gpkg|layername=polygon
+  '200':
+    Attributes: []
+    Description: CircleFrom3points_center
+    GeometryType: Circle3Points
+    Layer: /home/lbartoletti/prog/Oslandia/landsurveycodesimport/test/test_geometries.gpkg|layername=point
+  '201':
+    Attributes: []
+    Description: CircleFrom3points_line
+    GeometryType: Circle3Points
+    Layer: /home/lbartoletti/prog/Oslandia/landsurveycodesimport/test/test_geometries.gpkg|layername=line
+  '202':
+    Attributes: []
+    Description: CircleFrom3points_polygon
+    GeometryType: Circle3Points
+    Layer: /home/lbartoletti/prog/Oslandia/landsurveycodesimport/test/test_geometries.gpkg|layername=polygon
+  '300':
+    Attributes: []
+    Description: CircleFromCenterRadius_center
+    GeometryType: CircleCenterRadius
+    Layer: /home/lbartoletti/prog/Oslandia/landsurveycodesimport/test/test_geometries.gpkg|layername=point
+  '301':
+    Attributes: []
+    Description: CircleFromCenterRadius_line
+    GeometryType: CircleCenterRadius
+    Layer: /home/lbartoletti/prog/Oslandia/landsurveycodesimport/test/test_geometries.gpkg|layername=line
+  '302':
+    Attributes: []
+    Description: CircleFromCenterRadius_polygon
+    GeometryType: CircleCenterRadius
+    Layer: /home/lbartoletti/prog/Oslandia/landsurveycodesimport/test/test_geometries.gpkg|layername=polygon
+  '400':
+    Attributes: []
+    Description: CircleFromCenterDiameter_center
+    GeometryType: CircleCenterDiameter
+    Layer: /home/lbartoletti/prog/Oslandia/landsurveycodesimport/test/test_geometries.gpkg|layername=point
+  '401':
+    Attributes: []
+    Description: CircleFromCenterDiameter_line
+    GeometryType: CircleCenterDiameter
+    Layer: /home/lbartoletti/prog/Oslandia/landsurveycodesimport/test/test_geometries.gpkg|layername=line
+  '402':
+    Attributes: []
+    Description: CircleFromCenterDiameter_polygon
+    GeometryType: CircleCenterDiameter
+    Layer: /home/lbartoletti/prog/Oslandia/landsurveycodesimport/test/test_geometries.gpkg|layername=polygon
+  '500':
+    Attributes: []
+    Description: SquareFrom2points_center
+    GeometryType: Square2Points
+    Layer: /home/lbartoletti/prog/Oslandia/landsurveycodesimport/test/test_geometries.gpkg|layername=point
+  '501':
+    Attributes: []
+    Description: SquareFrom2points_line
+    GeometryType: Square2Points
+    Layer: /home/lbartoletti/prog/Oslandia/landsurveycodesimport/test/test_geometries.gpkg|layername=line
+  '502':
+    Attributes: []
+    Description: SquareFrom2points_polygon
+    GeometryType: Square2Points
+    Layer: /home/lbartoletti/prog/Oslandia/landsurveycodesimport/test/test_geometries.gpkg|layername=polygon
+  '600':
+    Attributes: []
+    Description: SquareFrom2DiagonalPoints_center
+    GeometryType: Square2Diagonal
+    Layer: /home/lbartoletti/prog/Oslandia/landsurveycodesimport/test/test_geometries.gpkg|layername=point
+  '601':
+    Attributes: []
+    Description: SquareFrom2DiagonalPoints_line
+    GeometryType: Square2Diagonal
+    Layer: /home/lbartoletti/prog/Oslandia/landsurveycodesimport/test/test_geometries.gpkg|layername=line
+  '602':
+    Attributes: []
+    Description: SquareFrom2DiagonalPoints_polygon
+    GeometryType: Square2Diagonal
+    Layer: /home/lbartoletti/prog/Oslandia/landsurveycodesimport/test/test_geometries.gpkg|layername=polygon
+  '700':
+    Attributes: []
+    Description: Rectangle2PointsHeight_center
+    GeometryType: Rectangle2PointsHeight
+    Layer: /home/lbartoletti/prog/Oslandia/landsurveycodesimport/test/test_geometries.gpkg|layername=point
+  '701':
+    Attributes: []
+    Description: Rectangle2PointsHeight_line
+    GeometryType: Rectangle2PointsHeight
+    Layer: /home/lbartoletti/prog/Oslandia/landsurveycodesimport/test/test_geometries.gpkg|layername=line
+  '702':
+    Attributes: []
+    Description: Rectangle2PointsHeight_polygon
+    GeometryType: Rectangle2PointsHeight
+    Layer: /home/lbartoletti/prog/Oslandia/landsurveycodesimport/test/test_geometries.gpkg|layername=polygon
+  '800':
+    Attributes: []
+    Description: Rectangle3PointsDistance_center
+    GeometryType: Rectangle3PointsDistance
+    Layer: /home/lbartoletti/prog/Oslandia/landsurveycodesimport/test/test_geometries.gpkg|layername=point
+  '801':
+    Attributes: []
+    Description: Rectangle3PointsDistance_line
+    GeometryType: Rectangle3PointsDistance
+    Layer: /home/lbartoletti/prog/Oslandia/landsurveycodesimport/test/test_geometries.gpkg|layername=line
+  '802':
+    Attributes: []
+    Description: Rectangle3PointsDistance_polygon
+    GeometryType: Rectangle3PointsDistance
+    Layer: /home/lbartoletti/prog/Oslandia/landsurveycodesimport/test/test_geometries.gpkg|layername=polygon
+  '900':
+    Attributes: []
+    Description: Rectangle3PointsProjected_center
+    GeometryType: Rectangle3PointsProjected
+    Layer: /home/lbartoletti/prog/Oslandia/landsurveycodesimport/test/test_geometries.gpkg|layername=point
+  '901':
+    Attributes: []
+    Description: Rectangle3PointsProjected_line
+    GeometryType: Rectangle3PointsProjected
+    Layer: /home/lbartoletti/prog/Oslandia/landsurveycodesimport/test/test_geometries.gpkg|layername=line
+  '902':
+    Attributes: []
+    Description: Rectangle3PointsProjected_polygon
+    GeometryType: Rectangle3PointsProjected
+    Layer: /home/lbartoletti/prog/Oslandia/landsurveycodesimport/test/test_geometries.gpkg|layername=polygon
+ErrorPoints:
+  Layer: ''
+  isChecked: false
+ParameterSeparator: '-'

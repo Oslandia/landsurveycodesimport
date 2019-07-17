@@ -8,7 +8,7 @@
 
 [general]
 name=Land Survey Codes Import
-qgisMinimumVersion=3.0
+qgisMinimumVersion=3.6
 description=This plugin allows you to easily import data from a land survey (GPS or total station) to draw automatically in a database using a codification (aka Field Codes).
 version=0.1.1
 author=Loïc Bartoletti (Oslandia)

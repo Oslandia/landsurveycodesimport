@@ -21,7 +21,7 @@
  ***************************************************************************/
 """
 
-from qgis.core import (QgsPoint, QgsCircle, QgsGeometry, QgsRegularPolygon,
+from qgis.core import (QgsPoint, QgsCircle, QgsGeometry, QgsRegularPolygon, QgsQuadrilateral,
                        QgsFeature, QgsVectorLayer, QgsWkbTypes,
                        QgsExpressionContext, QgsExpressionContextScope,
                        QgsExpression, QgsField,
@@ -133,18 +133,64 @@ def geomFromType(points, parameters, geomtype, layerType):
         except:
             return None
     elif (geomtype == "Square2Diagonal"):
-        # TODO: QgsRegularPolygon?
-        return None
+        try:
+            geom = QgsQuadrilateral.squareFromDiagonal(QgsPoint(*[float(f) for f in points[0]]),
+                                     QgsPoint(*[float(f) for f in points[1]])
+                                     )
+            if layerType == 0:
+                return QgsGeometry(geom.toPolygon().centroid())
+            elif layerType == 1:
+                return QgsGeometry(geom.toLineString())
+            else:
+                return QgsGeometry(geom.toPolygon())
+        except:
+            return None
     elif (geomtype == "Rectangle2PointsHeight"):
-        # TODO: projection des points suivant azimuth entre
-        # points[0] et points[1]?
-        return None
+        try:
+            p0 = QgsPoint(*[float(f) for f in points[0]])
+            p1 = QgsPoint(*[float(f) for f in points[1]])
+            azimuth = p0.azimuth(p1)
+            distance = float(parameters[0])
+            geom = QgsQuadrilateral(p0, p1, p1.project(distance, azimuth + 90.0), p0.project(distance, azimuth + 90.0))
+            if layerType == 0:
+                return QgsGeometry(geom.toPolygon().centroid())
+            elif layerType == 1:
+                return QgsGeometry(geom.toLineString())
+            else:
+                return QgsGeometry(geom.toPolygon())
+        except Exception as e:
+            print(e)
+            return None
     elif (geomtype == "Rectangle3PointsDistance"):
-        # TODO: voir code maptools
-        return None
+        try:
+            geom = QgsQuadrilateral.rectangleFrom3Points(QgsPoint(*[float(f) for f in points[0]]),
+                                     QgsPoint(*[float(f) for f in points[1]]),
+                                     QgsPoint(*[float(f) for f in points[2]]),
+                                     QgsQuadrilateral.Distance
+                                     )
+            if layerType == 0:
+                return QgsGeometry(geom.toPolygon().centroid())
+            elif layerType == 1:
+                return QgsGeometry(geom.toLineString())
+            else:
+                return QgsGeometry(geom.toPolygon())
+        except:
+            return None
     elif (geomtype == "Rectangle3PointsProjected"):
-        # TODO: voir code maptools
-        return None
+        try:
+            geom = QgsQuadrilateral.rectangleFrom3Points(QgsPoint(*[float(f) for f in points[0]]),
+                                     QgsPoint(*[float(f) for f in points[1]]),
+                                     QgsPoint(*[float(f) for f in points[2]]),
+                                     QgsQuadrilateral.Projected
+                                     )
+            if layerType == 0:
+                return QgsGeometry(geom.toPolygon().centroid())
+            elif layerType == 1:
+                return QgsGeometry(geom.toLineString())
+            else:
+                return QgsGeometry(geom.toPolygon())
+        except:
+            return None
     elif (geomtype == "Line"):
         if layerType == 0:
             return None
@@ -564,7 +610,7 @@ def landsurveyImport(FILE, QLSC):
     rows = []
     with open(FILE, 'r') as codif:
         reader = csv.reader(codif)
-        rows = [r for r in reader]
+        rows = [r for r in reader if (len(r) >= 5 and r[0][0] != '#')]
 
     (table, error) = separeTable(rows,
                                  codesList,

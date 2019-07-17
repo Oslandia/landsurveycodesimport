@@ -76,7 +76,7 @@ AVAILABLE_CODE = [
      QgsMapLayerProxyModel.PointLayer,
      "nbpoints": 2,
      "nbparams": 0,
-     "available": False,
+     "available": True,
      "code": "Square2Diagonal"},
     {"name": tr("Rectangle from 2 points and height"),
      "filter": QgsMapLayerProxyModel.PolygonLayer |
@@ -84,7 +84,7 @@ AVAILABLE_CODE = [
      QgsMapLayerProxyModel.PointLayer,
      "nbpoints": 2,
      "nbparams": 1,
-     "available": False,
+     "available": True,
      "code": "Rectangle2PointsHeight"},
     {"name": tr("Rectangle from 3 points (3rd point = distance)"),
      "filter": QgsMapLayerProxyModel.PolygonLayer |
@@ -92,7 +92,7 @@ AVAILABLE_CODE = [
      QgsMapLayerProxyModel.PointLayer,
      "nbpoints": 3,
      "nbparams": 0,
-     "available": False,
+     "available": True,
      "code": "Rectangle3PointsDistance"},
     {"name": tr("Rectangle from 3 points (3rd point = projected orthogonal)"),
      "filter": QgsMapLayerProxyModel.PolygonLayer |
@@ -100,7 +100,7 @@ AVAILABLE_CODE = [
      QgsMapLayerProxyModel.PointLayer,
      "nbpoints": 3,
      "nbparams": 0,
-     "available": False,
+     "available": True,
      "code": "Rectangle3PointsProjected"},
     {"name": tr("Line"),
      "filter": QgsMapLayerProxyModel.PolygonLayer |
