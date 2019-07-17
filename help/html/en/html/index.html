@@ -76,7 +76,7 @@
 <td>0</td>
 <td>Yes</td>
 </tr>
-<tr class="row-even"><td>Circle by centre and radius</td>
+<tr class="row-even"><td>Circle by centre and radius [1]</td>
 <td>X</td>
 <td>X</td>
 <td>X</td>
@@ -84,7 +84,7 @@
 <td>1</td>
 <td>Yes</td>
 </tr>
-<tr class="row-odd"><td>Circle by centre and diameter</td>
+<tr class="row-odd"><td>Circle by centre and diameter [1]</td>
 <td>X</td>
 <td>X</td>
 <td>X</td>
@@ -108,7 +108,7 @@
 <td>0</td>
 <td>No</td>
 </tr>
-<tr class="row-even"><td>Rectangle by 2 points and height</td>
+<tr class="row-even"><td>Rectangle by 2 points and height [1]</td>
 <td>X</td>
 <td>X</td>
 <td>X</td>
@@ -132,12 +132,12 @@
 <td>0</td>
 <td>No</td>
 </tr>
-<tr class="row-odd"><td>Line*</td>
+<tr class="row-odd"><td>Line [2]</td>
 <td>&#160;</td>
 <td>X</td>
 <td>X</td>
 <td>Minimum 2</td>
-<td>0</td>
+<td>1</td>
 <td>Yes</td>
 </tr>
 <tr class="row-even"><td>Point</td>
@@ -150,6 +150,17 @@
 </tr>
 </tbody>
 </table>
+<div class="section" id="explanation-of-the-parameters">
+<h3>Explanation of the parameters<a class="headerlink" href="#explanation-of-the-parameters" title="Permalink to this headline">¶</a></h3>
+<p>[1] Means that the code must have a parameter and that it is of a numerical type. Example of the circle by a center and radius. You enter the center of the circle by a point whose code is 100 and you must enter the radius (in the projection unit) by adding the parameter character and the measurement, i.e. 100-1 for a circle with a radius of one meter.</p>
+<p>[2] a line is handled in a special way since it needs information indicating the opening and closing of the line, as well as changes of nature (arcs - not yet implemented). Taking as an example, a line with a code of 100, this line has 4 points must be filled in this way:</p>
+<ul class="simple">
+<li>1,…, 100-1</li>
+<li>2,…, 100-2</li>
+<li>3,…, 100-2</li>
+<li>4,…, 100-9</li>
+</ul>
+</div>
 </div>
 <div class="section" id="creation-of-the-codification">
 <h2>Creation of the codification<a class="headerlink" href="#creation-of-the-codification" title="Permalink to this headline">¶</a></h2>
