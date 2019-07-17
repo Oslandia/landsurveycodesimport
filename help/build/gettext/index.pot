@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Land survey codes import 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-17 11:27+0200\n"
+"POT-Creation-Date: 2019-07-17 15:23+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -120,6 +120,11 @@ msgstr ""
 #: ../../source/index.rst:23
 #: ../../source/index.rst:25
 #: ../../source/index.rst:27
+#: ../../source/index.rst:29
+#: ../../source/index.rst:31
+#: ../../source/index.rst:33
+#: ../../source/index.rst:35
+#: ../../source/index.rst:37
 #: ../../source/index.rst:39
 #: ../../source/index.rst:41
 msgid "Yes"
@@ -155,14 +160,6 @@ msgstr ""
 
 #: ../../source/index.rst:29
 msgid "Square by 2 points"
-msgstr ""
-
-#: ../../source/index.rst:29
-#: ../../source/index.rst:31
-#: ../../source/index.rst:33
-#: ../../source/index.rst:35
-#: ../../source/index.rst:37
-msgid "No"
 msgstr ""
 
 #: ../../source/index.rst:31
