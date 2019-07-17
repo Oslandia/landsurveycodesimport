@@ -22,25 +22,37 @@ The tool proposes to generate the following elements for each type of geometry:
 +-------------------------------------------------------------+-------+------+---------+------------------+----------------------+---------+
 | Circle by 3 points                                          | X     | X    | X       | 3                | 0                    | Yes     |
 +-------------------------------------------------------------+-------+------+---------+------------------+----------------------+---------+
-| Circle by centre and radius                                 | X     | X    | X       | 1                | 1                    | Yes     |
+| Circle by centre and radius [1]                             | X     | X    | X       | 1                | 1                    | Yes     |
 +-------------------------------------------------------------+-------+------+---------+------------------+----------------------+---------+
-| Circle by centre and diameter                               | X     | X    | X       | 1                | 1                    | Yes     |
+| Circle by centre and diameter [1]                           | X     | X    | X       | 1                | 1                    | Yes     |
 +-------------------------------------------------------------+-------+------+---------+------------------+----------------------+---------+
 | Square by 2 points                                          | X     | X    | X       | 2                | 0                    | No      |
 +-------------------------------------------------------------+-------+------+---------+------------------+----------------------+---------+
 | Square by 2 diagnoal points                                 | X     | X    | X       | 2                | 0                    | No      |
 +-------------------------------------------------------------+-------+------+---------+------------------+----------------------+---------+
-| Rectangle by 2 points and height                            | X     | X    | X       | 2                | 1                    | No      |
+| Rectangle by 2 points and height [1]                        | X     | X    | X       | 2                | 1                    | No      |
 +-------------------------------------------------------------+-------+------+---------+------------------+----------------------+---------+
 | Rectangle by 3 points (3rd point = distance from 2nd point) | X     | X    | X       | 3                | 0                    | No      |
 +-------------------------------------------------------------+-------+------+---------+------------------+----------------------+---------+
 | Rectangle by 3 points (3rd point = orthogonal projection)   | X     | X    | X       | 3                | 0                    | No      |
 +-------------------------------------------------------------+-------+------+---------+------------------+----------------------+---------+
-| Line*                                                       |       | X    | X       | Minimum 2        | 0                    | Yes     |
+| Line [2]                                                    |       | X    | X       | Minimum 2        | 1                    | Yes     |
 +-------------------------------------------------------------+-------+------+---------+------------------+----------------------+---------+
 | Point                                                       | X     |      |         | 1                | 0                    | Yes     |
 +-------------------------------------------------------------+-------+------+---------+------------------+----------------------+---------+
 
+-----------------------------
+Explanation of the parameters
+-----------------------------
+
+[1] Means that the code must have a parameter and that it is of a numerical type. Example of the circle by a center and radius. You enter the center of the circle by a point whose code is 100 and you must enter the radius (in the projection unit) by adding the parameter character and the measurement, i.e. 100-1 for a circle with a radius of one meter.
+
+[2] a line is handled in a special way since it needs information indicating the opening and closing of the line, as well as changes of nature (arcs - not yet implemented). Taking as an example, a line with a code of 100, this line has 4 points must be filled in this way:
+
+- 1,..., 100-1
+- 2,..., 100-2
+- 3,..., 100-2
+- 4,..., 100-9
 
 ****************************
 Creation of the codification

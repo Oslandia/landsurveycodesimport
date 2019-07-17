@@ -1,0 +1,409 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, Loïc Bartoletti (Oslandia)
+# This file is distributed under the same license as the Land survey codes import package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Land survey codes import 0.0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-17 11:27+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../source/index.rst:7
+msgid "Welcome to Land survey codes import's documentation!"
+msgstr ""
+
+#: ../../source/index.rst:11
+#: ../../source/index.rst:119
+msgid "General principle"
+msgstr ""
+
+#: ../../source/index.rst:13
+msgid "The plugin works according to topography codification principles. The topographic department must first create a codification that will be used by operators in the field. On his field book, when he records a point, the operator will also enter a code. The operator has the possibility to survey several codes for the same point. This codified survey will allow the automatic generation of the drawing, with the possibility of pre-filling attributes that will be processed later. The GIS administrator will be able to link the import with other treatments thanks to the QGIS processing."
+msgstr ""
+
+#: ../../source/index.rst:15
+msgid "The tool proposes to generate the following elements for each type of geometry:"
+msgstr ""
+
+#: ../../source/index.rst:19
+msgid "Type"
+msgstr ""
+
+#: ../../source/index.rst:19
+#: ../../source/index.rst:41
+msgid "Point"
+msgstr ""
+
+#: ../../source/index.rst:19
+msgid "Line"
+msgstr ""
+
+#: ../../source/index.rst:19
+msgid "Polygon"
+msgstr ""
+
+#: ../../source/index.rst:19
+msgid "Number of points"
+msgstr ""
+
+#: ../../source/index.rst:19
+msgid "Number of parameters"
+msgstr ""
+
+#: ../../source/index.rst:19
+msgid "Present"
+msgstr ""
+
+#: ../../source/index.rst:21
+msgid "Circle by 2 points"
+msgstr ""
+
+#: ../../source/index.rst:21
+#: ../../source/index.rst:21
+#: ../../source/index.rst:21
+#: ../../source/index.rst:23
+#: ../../source/index.rst:23
+#: ../../source/index.rst:23
+#: ../../source/index.rst:25
+#: ../../source/index.rst:25
+#: ../../source/index.rst:25
+#: ../../source/index.rst:27
+#: ../../source/index.rst:27
+#: ../../source/index.rst:27
+#: ../../source/index.rst:29
+#: ../../source/index.rst:29
+#: ../../source/index.rst:29
+#: ../../source/index.rst:31
+#: ../../source/index.rst:31
+#: ../../source/index.rst:31
+#: ../../source/index.rst:33
+#: ../../source/index.rst:33
+#: ../../source/index.rst:33
+#: ../../source/index.rst:35
+#: ../../source/index.rst:35
+#: ../../source/index.rst:35
+#: ../../source/index.rst:37
+#: ../../source/index.rst:37
+#: ../../source/index.rst:37
+#: ../../source/index.rst:39
+#: ../../source/index.rst:39
+#: ../../source/index.rst:41
+msgid "X"
+msgstr ""
+
+#: ../../source/index.rst:21
+#: ../../source/index.rst:29
+#: ../../source/index.rst:31
+#: ../../source/index.rst:33
+msgid "2"
+msgstr ""
+
+#: ../../source/index.rst:21
+#: ../../source/index.rst:23
+#: ../../source/index.rst:29
+#: ../../source/index.rst:31
+#: ../../source/index.rst:35
+#: ../../source/index.rst:37
+#: ../../source/index.rst:41
+msgid "0"
+msgstr ""
+
+#: ../../source/index.rst:21
+#: ../../source/index.rst:23
+#: ../../source/index.rst:25
+#: ../../source/index.rst:27
+#: ../../source/index.rst:39
+#: ../../source/index.rst:41
+msgid "Yes"
+msgstr ""
+
+#: ../../source/index.rst:23
+msgid "Circle by 3 points"
+msgstr ""
+
+#: ../../source/index.rst:23
+#: ../../source/index.rst:35
+#: ../../source/index.rst:37
+msgid "3"
+msgstr ""
+
+#: ../../source/index.rst:25
+msgid "Circle by centre and radius [1]"
+msgstr ""
+
+#: ../../source/index.rst:25
+#: ../../source/index.rst:25
+#: ../../source/index.rst:27
+#: ../../source/index.rst:27
+#: ../../source/index.rst:33
+#: ../../source/index.rst:39
+#: ../../source/index.rst:41
+msgid "1"
+msgstr ""
+
+#: ../../source/index.rst:27
+msgid "Circle by centre and diameter [1]"
+msgstr ""
+
+#: ../../source/index.rst:29
+msgid "Square by 2 points"
+msgstr ""
+
+#: ../../source/index.rst:29
+#: ../../source/index.rst:31
+#: ../../source/index.rst:33
+#: ../../source/index.rst:35
+#: ../../source/index.rst:37
+msgid "No"
+msgstr ""
+
+#: ../../source/index.rst:31
+msgid "Square by 2 diagnoal points"
+msgstr ""
+
+#: ../../source/index.rst:33
+msgid "Rectangle by 2 points and height [1]"
+msgstr ""
+
+#: ../../source/index.rst:35
+msgid "Rectangle by 3 points (3rd point = distance from 2nd point)"
+msgstr ""
+
+#: ../../source/index.rst:37
+msgid "Rectangle by 3 points (3rd point = orthogonal projection)"
+msgstr ""
+
+#: ../../source/index.rst:39
+msgid "Line [2]"
+msgstr ""
+
+#: ../../source/index.rst:39
+msgid "Minimum 2"
+msgstr ""
+
+#: ../../source/index.rst:46
+msgid "Explanation of the parameters"
+msgstr ""
+
+#: ../../source/index.rst:48
+msgid "[1] Means that the code must have a parameter and that it is of a numerical type. Example of the circle by a center and radius. You enter the center of the circle by a point whose code is 100 and you must enter the radius (in the projection unit) by adding the parameter character and the measurement, i.e. 100-1 for a circle with a radius of one meter."
+msgstr ""
+
+#: ../../source/index.rst:50
+msgid "[2] a line is handled in a special way since it needs information indicating the opening and closing of the line, as well as changes of nature (arcs - not yet implemented). Taking as an example, a line with a code of 100, this line has 4 points must be filled in this way:"
+msgstr ""
+
+#: ../../source/index.rst:52
+msgid "1,..., 100-1"
+msgstr ""
+
+#: ../../source/index.rst:53
+msgid "2,..., 100-2"
+msgstr ""
+
+#: ../../source/index.rst:54
+msgid "3,..., 100-2"
+msgstr ""
+
+#: ../../source/index.rst:55
+msgid "4,..., 100-9"
+msgstr ""
+
+#: ../../source/index.rst:59
+msgid "Creation of the codification"
+msgstr ""
+
+#: ../../source/index.rst:61
+msgid "The codification preparation cannot be done without first having opened a qgis project containing the layers in which the data will be inserted. For the times the layers must be in geopackages. There is no limit to the number of these geopackages. A good practice is to group the layers in thematic geopackages: water, sanitation, roads, etc. If the data is in a postgresql database, it is possible to export them in geopackages via the \"Package layers\" tool."
+msgstr ""
+
+#: ../../source/index.rst:66
+msgid "By clicking on the icon |icon|, the codification configuration window appears."
+msgstr ""
+
+#: ../../source/index.rst:68
+msgid "|codification|"
+msgstr ""
+
+#: ../../source/index.rst:72
+msgid "General parameters"
+msgstr ""
+
+#: ../../source/index.rst:74
+msgid "The general parameters define the separators used. A separator to indicate the different codes on the same point and a separator to indicate the parameters. These must be adapted according to the capacities of the field book."
+msgstr ""
+
+#: ../../source/index.rst:78
+msgid "Codification"
+msgstr ""
+
+#: ../../source/index.rst:80
+msgid "\"Code\" can be alphanumeric, no restriction is imposed, but it must be compatible with your device. It is preferable not to insert spaces or special characters"
+msgstr ""
+
+#: ../../source/index.rst:82
+msgid "It is possible to add a comment on the code in the \"Description\" field."
+msgstr ""
+
+#: ../../source/index.rst:84
+msgid "The \"Geometry\" is to be chosen from the one indicated above. It is filtered on the geometry of the \"Output Layer\" from the \"GeoPackage\" selected below."
+msgstr ""
+
+#: ../../source/index.rst:88
+msgid "Attributes"
+msgstr ""
+
+#: ../../source/index.rst:90
+msgid "You can automatically generate attributes in the layer columns using the same principles as the QGIS expression calculator. Attention, however, this one does not have vocation to accept complex requests, it is preferable to carry out this stage after the import of the data."
+msgstr ""
+
+#: ../../source/index.rst:93
+msgid "If the exported data from the logbook has additional attributes, it is possible to integrate them by specifying in the expression field'_attN' where N corresponds to the field number (starting with 1). There is no limitation on attributes as long as the CSV file is compliant."
+msgstr ""
+
+#: ../../source/index.rst:97
+msgid "Special points"
+msgstr ""
+
+#: ../../source/index.rst:99
+msgid "Error points can be added in a particular layer as well as all points recorded."
+msgstr ""
+
+#: ../../source/index.rst:101
+msgid "Items that do not conform to the coding rule, e.g. code with 3 points and only 2 points, etc., are called error."
+msgstr ""
+
+#: ../../source/index.rst:105
+msgid "Open / Save"
+msgstr ""
+
+#: ../../source/index.rst:107
+msgid "The File menu allows opening, closing, saving, etc. of the codification."
+msgstr ""
+
+#: ../../source/index.rst:109
+msgid "The codification is saved in a YAML format whose extension is.qlsc"
+msgstr ""
+
+#: ../../source/index.rst:111
+msgid "|yaml|"
+msgstr ""
+
+#: ../../source/index.rst:115
+msgid "Points import"
+msgstr ""
+
+#: ../../source/index.rst:121
+msgid "For now, the tool only allows CSV files to be read, so the operator must export his data in CSV format in this order: Point identifier, x coordinate, y coordinate, z coordinate, code, attribute 1, attribute 2,..., attribute N"
+msgstr ""
+
+#: ../../source/index.rst:124
+msgid "|csv|"
+msgstr ""
+
+#: ../../source/index.rst:126
+msgid "The tool will separate the codes that are on the same point, and then match them according to their code. For example a csv like:"
+msgstr ""
+
+#: ../../source/index.rst:130
+msgid "'2', '1980244.900', '5190520.938', '1002.461', '300+200'"
+msgstr ""
+
+#: ../../source/index.rst:132
+#: ../../source/index.rst:143
+#: ../../source/index.rst:151
+msgid "'3', '1980249.438', '5190515.953', '1002.329', '101'"
+msgstr ""
+
+#: ../../source/index.rst:134
+msgid "'1', '1980242.941', '5190519.460', '1002.521', '200+300'"
+msgstr ""
+
+#: ../../source/index.rst:137
+msgid "will be transformed into:"
+msgstr ""
+
+#: ../../source/index.rst:139
+#: ../../source/index.rst:157
+msgid "'2', '1980244.900', '5190520.938', '1002.461', '300'"
+msgstr ""
+
+#: ../../source/index.rst:141
+#: ../../source/index.rst:153
+msgid "'2', '1980244.900', '5190520.938', '1002.461', '200'"
+msgstr ""
+
+#: ../../source/index.rst:145
+#: ../../source/index.rst:155
+msgid "'1', '1980242.941', '5190519.460', '1002.521', '200'"
+msgstr ""
+
+#: ../../source/index.rst:147
+#: ../../source/index.rst:159
+msgid "'1', '1980242.941', '5190519.460', '1002.521', '300'"
+msgstr ""
+
+#: ../../source/index.rst:149
+msgid "and then:"
+msgstr ""
+
+#: ../../source/index.rst:162
+msgid "The tool will process the codes in queue, special attention is requested to the operator entering the codes because an input error will delay the coding and the resulting drawing."
+msgstr ""
+
+#: ../../source/index.rst:166
+msgid "Processing import"
+msgstr ""
+
+#: ../../source/index.rst:168
+msgid "|processing|"
+msgstr ""
+
+#: ../../source/index.rst:170
+msgid "The import is done via a new module in the processing."
+msgstr ""
+
+#: ../../source/index.rst:172
+msgid "The tool asks for the configuration file (.qlsc file) and the points file (.csv)"
+msgstr ""
+
+#: ../../source/index.rst:174
+msgid "|processing1|"
+msgstr ""
+
+#: ../../source/index.rst:178
+msgid "Result"
+msgstr ""
+
+#: ../../source/index.rst:180
+msgid "At the end of the import, you have to refresh the canvas to see the drawing. The data is obviously displayed with the style determined in the project."
+msgstr ""
+
+#: ../../source/index.rst:182
+msgid "|result|"
+msgstr ""
+
+#: ../../source/index.rst:190
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../source/index.rst:192
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../source/index.rst:193
+msgid ":ref:`modindex`"
+msgstr ""
+
+#: ../../source/index.rst:194
+msgid ":ref:`search`"
+msgstr ""
+
