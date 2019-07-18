@@ -1,4 +1,4 @@
-AllPoints: {Layer: /usr/home/lbartoletti/prog/Oslandia/landsurveycodesimport/test/demo_topo.gpkg|layername=all,
+AllPoints: {Layer: /home/lbartoletti/prog/Oslandia/landsurveycodesimport/test/demo_topo.gpkg|layername=all,
   isChecked: true}
 CodeSeparator: +
 Codification:
@@ -7,35 +7,35 @@ Codification:
     - !!python/tuple [dim, _param]
     Description: ''
     GeometryType: 'CircleCenterRadius'
-    Layer: /usr/home/lbartoletti/prog/Oslandia/landsurveycodesimport/test/demo_eau.gpkg|layername=regard
+    Layer: /home/lbartoletti/prog/Oslandia/landsurveycodesimport/test/demo_eau.gpkg|layername=regard
   '20':
     Attributes:
     - !!python/tuple [style, _att1]
     - !!python/tuple [nb_lum, _att2]
     Description: ''
     GeometryType: 'Point'
-    Layer: /usr/home/lbartoletti/prog/Oslandia/landsurveycodesimport/test/demo_eclairage.gpkg|layername=candelabre
+    Layer: /home/lbartoletti/prog/Oslandia/landsurveycodesimport/test/demo_eclairage.gpkg|layername=candelabre
   '30':
     Attributes:
     - !!python/tuple [nom, _att1]
     - !!python/tuple [long_troncon, ' $length ']
     Description: ''
     GeometryType: 'Line'
-    Layer: /usr/home/lbartoletti/prog/Oslandia/landsurveycodesimport/test/demo_voirie.gpkg|layername=demo_voirie
+    Layer: /home/lbartoletti/prog/Oslandia/landsurveycodesimport/test/demo_voirie.gpkg|layername=demo_voirie
   '40':
     Attributes:
     - !!python/tuple [type, _att1]
     - !!python/tuple [surface, $area]
     Description: ''
     GeometryType: 'Line'
-    Layer: /usr/home/lbartoletti/prog/Oslandia/landsurveycodesimport/test/demo_voirie.gpkg|layername=surface
+    Layer: /home/lbartoletti/prog/Oslandia/landsurveycodesimport/test/demo_voirie.gpkg|layername=surface
   '50':
     Attributes:
     - !!python/tuple [type, _att1]
     - !!python/tuple [surface, $area]
     Description: ''
     GeometryType: 'Circle3Points'
-    Layer: /usr/home/lbartoletti/prog/Oslandia/landsurveycodesimport/test/demo_voirie.gpkg|layername=surface
-ErrorPoints: {Layer: /usr/home/lbartoletti/prog/Oslandia/landsurveycodesimport/test/demo_topo.gpkg|layername=error,
+    Layer: /home/lbartoletti/prog/Oslandia/landsurveycodesimport/test/demo_voirie.gpkg|layername=surface
+ErrorPoints: {Layer: /home/lbartoletti/prog/Oslandia/landsurveycodesimport/test/demo_topo.gpkg|layername=error,
   isChecked: true}
 ParameterSeparator: '-'
