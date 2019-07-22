@@ -221,13 +221,15 @@ def geomFromType(points, parameters, geomtype, layerType):
                 if len(arc) == 3:
                     curve.addCurve(QgsCircularString(*arc))
                     arc = []
-        
+       
+        if line: # Oh, only a linestring not yet parsed
+            curve.addCurve(QgsLineString(line))
+
         if layerType == 1:
             return (QgsGeometry(curve), arc)
         else:
-            if line[0] != line[nb - 1]:
-                line.append(line[0])
             p = QgsCurvePolygon()
+            curve.close()
             p.setExteriorRing(curve)
             return (QgsGeometry(p), arc)
         return (None, arc)
