@@ -21,11 +21,11 @@
  ***************************************************************************/
 """
 
-from qgis.core import (QgsPoint, QgsCircle, QgsGeometry, QgsRegularPolygon, QgsQuadrilateral,
+from qgis.core import (QgsPoint, QgsCircle, QgsGeometry, QgsRegularPolygon, QgsQuadrilateral, QgsCompoundCurve,
                        QgsFeature, QgsVectorLayer, QgsWkbTypes,
                        QgsExpressionContext, QgsExpressionContextScope,
                        QgsExpression, QgsField,
-                       QgsPolygon, QgsLineString)
+                       QgsPolygon, QgsLineString, QgsCurvePolygon, QgsCircularString)
 
 from PyQt5.QtCore import QVariant
 import csv
@@ -197,20 +197,40 @@ def geomFromType(points, parameters, geomtype, layerType):
         nb = len(points)
 
         if nb < 2:
-            return None
+            return (None, nb)
 
         line = []
-        for p in points:
-            line.append(QgsPoint(*[float(f) for f in p]))
+        arc = []
+        curve = QgsCompoundCurve()
+        for i, p in enumerate(points):
+            if parameters[i] != '3':
+                if len(arc) > 0: # Arc haven't 3 points so points go in the straight line
+                    # TODO : LOG
+                    line += arc
+                    arc = []
+                if len(line) == 0 and i+1 > len(points): # The final point, is a single point and must be a linestring, so we take the last point
+                    line.append(QgsPoint(*[float(f) for f in points[i-1]]))
+                line.append(QgsPoint(*[float(f) for f in p]))
+            else:
+                # get first point to the junction
+                if len(line) > 0:
+                    line.append(QgsPoint(*[float(f) for f in p]))
+                    curve.addCurve(QgsLineString(line))
+                    line = []
+                arc.append(QgsPoint(*[float(f) for f in p]))
+                if len(arc) == 3:
+                    curve.addCurve(QgsCircularString(*arc))
+                    arc = []
+        
         if layerType == 1:
-            return QgsGeometry.fromPolyline(line)
+            return (QgsGeometry(curve), arc)
         else:
             if line[0] != line[nb - 1]:
                 line.append(line[0])
-            p = QgsPolygon()
-            p.setExteriorRing(QgsLineString(line))
-            return QgsGeometry(p)
-        return None
+            p = QgsCurvePolygon()
+            p.setExteriorRing(curve)
+            return (QgsGeometry(p), arc)
+        return (None, arc)
     elif (geomtype == "Point"):
         try:
             if layerType == 0:
@@ -249,10 +269,20 @@ def addRowInLayer(row, errTable, table_codif):
     layer = QgsVectorLayer(layerName)
 
     dim = 4 if QgsWkbTypes.hasZ(layer.dataProvider().wkbType()) else 3
+
     geom = geomFromType(list(zip(*row[1:dim])), parameters,
                         codif['GeometryType'], layer.geometryType())
+    
+    if codif['GeometryType'] == 'Line':
+        orphanNodes = geom[1]
+        geom = geom[0]
 
     if geom:
+        if codif['GeometryType'] == 'Line':
+            arc = list(zip(*row))
+            for r in arc[len(arc)-len(orphanNodes):]:
+                errTable.append(r)
+
         layer.startEditing()
 
         fields = layer.fields()
@@ -291,8 +321,8 @@ def addRowInLayer(row, errTable, table_codif):
         layer.commitChanges()
         layer.updateExtents()
     else:
-        # can it happen?
-        errTable.append(row)
+        for err in list(zip(*row)):
+            errTable.append(err)
 
 
 def parseTable(table, errTable, table_codif, parameterSeparator='-'):
@@ -369,8 +399,9 @@ def parseTable(table, errTable, table_codif, parameterSeparator='-'):
         initRow = []
         initRow.append(row)
         n = 0
-        if nbPoints < 0:
+        if nbPoints < 0: # Special case for line
             run = True
+            arc = []
             while run:
                 if j+n+1 >= len(w_table):
                     break
@@ -388,7 +419,7 @@ def parseTable(table, errTable, table_codif, parameterSeparator='-'):
                 else:
                     run = False
             if len(initRow) < 2:
-                for r in initRow:
+                for r in list(zip(*initRow)):
                     errTable.append(r)
                 initRow = None
         else:

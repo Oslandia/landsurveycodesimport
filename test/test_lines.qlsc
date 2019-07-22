@@ -1,0 +1,23 @@
+AllPoints:
+  Layer: ''
+  isChecked: false
+CodeSeparator: +
+Codification:
+  '10':
+    Attributes: []
+    Description: ''
+    GeometryType: Line
+    Layer: /home/lbartoletti/prog/Oslandia/landsurveycodesimport/test/test_lines.gpkg|layername=curve_lines
+  '20':
+    Attributes: []
+    Description: ''
+    GeometryType: Line
+    Layer: /home/lbartoletti/prog/Oslandia/landsurveycodesimport/test/test_lines.gpkg|layername=straight_line
+  '30':
+    Attributes: []
+    Description: ''
+    GeometryType: Line
+    Layer: /home/lbartoletti/prog/Oslandia/landsurveycodesimport/test/test_lines.gpkg|layername=line_error
+ErrorPoints: {Layer: /home/lbartoletti/prog/Oslandia/landsurveycodesimport/test/test_lines.gpkg|layername=error,
+  isChecked: true}
+ParameterSeparator: '-'
