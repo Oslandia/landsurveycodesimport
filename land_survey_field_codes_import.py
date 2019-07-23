@@ -194,6 +194,7 @@ def geomFromType(points, parameters, geomtype, layerType):
     elif (geomtype == "Line"):
         if layerType == 0:
             return None
+
         nb = len(points)
 
         if nb < 2:
@@ -201,6 +202,7 @@ def geomFromType(points, parameters, geomtype, layerType):
 
         line = []
         arc = []
+        arcBefore = False
         curve = QgsCompoundCurve()
         for i, p in enumerate(points):
             if parameters[i] != '3':
@@ -208,9 +210,10 @@ def geomFromType(points, parameters, geomtype, layerType):
                     # TODO : LOG
                     line += arc
                     arc = []
-                if len(line) == 0 and i+1 > len(points): # The final point, is a single point and must be a linestring, so we take the last point
+                if (len(line) == 0 and i+1 == len(points)) or arcBefore: # The final point, is a single point and must be a linestring, so we take the last point
                     line.append(QgsPoint(*[float(f) for f in points[i-1]]))
                 line.append(QgsPoint(*[float(f) for f in p]))
+                arcBefore = False
             else:
                 # get first point to the junction
                 if len(line) > 0:
@@ -221,6 +224,7 @@ def geomFromType(points, parameters, geomtype, layerType):
                 if len(arc) == 3:
                     curve.addCurve(QgsCircularString(*arc))
                     arc = []
+                arcBefore = True
        
         if line: # Oh, only a linestring not yet parsed
             curve.addCurve(QgsLineString(line))
@@ -274,7 +278,7 @@ def addRowInLayer(row, errTable, table_codif):
 
     geom = geomFromType(list(zip(*row[1:dim])), parameters,
                         codif['GeometryType'], layer.geometryType())
-    
+  
     if codif['GeometryType'] == 'Line':
         orphanNodes = geom[1]
         geom = geom[0]
@@ -302,7 +306,7 @@ def addRowInLayer(row, errTable, table_codif):
                     val = row[ATTRS_POSITION + nb][0]
                     newFeature[e[0]] = val
                 except:
-                    # print("attributes error")
+                    print("attributes error")
                     pass
             else:
                 context = QgsExpressionContext()
@@ -313,14 +317,19 @@ def addRowInLayer(row, errTable, table_codif):
                     context.appendScope(scope)
                     newFeature[e[0]] = exp.evaluate(context)
                 except:
-                    # print('key error')
+                    print('key error')
                     pass
 
         ret = layer.addFeature(newFeature)
-        # if not ret:
-         #   print(ret)
+        if not ret:
+           print(ret)
 
-        layer.commitChanges()
+        ret = layer.commitChanges()
+        if not ret:
+            print(layer.commitErrors())
+            for err in list(zip(*row)):
+                errTable.append(err)
+
         layer.updateExtents()
     else:
         for err in list(zip(*row)):
