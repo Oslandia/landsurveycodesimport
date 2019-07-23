@@ -653,7 +653,7 @@ def verifyCodification(code_file):
 def landsurveyImport(FILE, QLSC):
     codesList = []
     with open(QLSC, 'r') as stream:
-        code = yaml.load(stream)
+        code = yaml.full_load(stream)
         verifyCodification(code)
         codesList = code['Codification'].keys()
 
