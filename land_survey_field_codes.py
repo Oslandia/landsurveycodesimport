@@ -41,6 +41,7 @@ cmd_folder = os.path.split(inspect.getfile(inspect.currentframe()))[0]
 if cmd_folder not in sys.path:
     sys.path.insert(0, cmd_folder)
 
+
 class LandSurveyFieldCodes:
     """QGIS Plugin Implementation."""
 
@@ -95,18 +96,17 @@ class LandSurveyFieldCodes:
         # noinspection PyTypeChecker,PyArgumentList,PyCallByClass
         return QCoreApplication.translate('LandSurveyFieldCodes', message)
 
-
     def add_action(
-        self,
-        icon_path,
-        text,
-        callback,
-        enabled_flag=True,
-        add_to_menu=True,
-        add_to_toolbar=True,
-        status_tip=None,
-        whats_this=None,
-        parent=None):
+            self,
+            icon_path,
+            text,
+            callback,
+            enabled_flag=True,
+            add_to_menu=True,
+            add_to_toolbar=True,
+            status_tip=None,
+            whats_this=None,
+            parent=None):
         """Add a toolbar icon to the toolbar.
 
         :param icon_path: Path to the icon for this action. Can be a resource
@@ -178,7 +178,7 @@ class LandSurveyFieldCodes:
             text=self.tr(u'Land Survey Codes Import'),
             callback=self.run,
             parent=self.iface.mainWindow())
-        
+
         icon_path = None
         self.add_action(
             icon_path,
@@ -188,7 +188,7 @@ class LandSurveyFieldCodes:
             parent=self.iface.mainWindow())
 
         QgsApplication.processingRegistry().addProvider(self.provider)
-	
+
     def unload(self):
         """Removes the plugin menu item and icon from QGIS GUI."""
         for action in self.actions:
@@ -201,12 +201,12 @@ class LandSurveyFieldCodes:
 
         QgsApplication.processingRegistry().removeProvider(self.provider)
 
-
     def run(self):
         """Run method that performs all the real work"""
         # show the dialog
         self.dlg.show()
 
     def doHelp(self):
-        help_file = "file://" + self.plugin_dir + "/help/" + self.locale + "/html/index.html"
+        help_file = "file://" + self.plugin_dir + \
+            "/help/" + self.locale + "/html/index.html"
         QDesktopServices.openUrl(QUrl(help_file))

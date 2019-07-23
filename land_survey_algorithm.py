@@ -34,7 +34,8 @@ from qgis.core import (QgsProcessing,
                        QgsProcessingAlgorithm,
                        QgsProcessingParameterFile)
 
-from .land_survey_field_codes_import import landsurveyImport 
+from .land_survey_field_codes_import import landsurveyImport
+
 
 class landsurveyAlgorithm(QgsProcessingAlgorithm):
     """
@@ -99,7 +100,7 @@ class landsurveyAlgorithm(QgsProcessingAlgorithm):
         #    f.write(source)
         #    f.write(qlscfile)
         landsurveyImport(source, qlscfile)
-        #(sink, dest_id) = self.parameterAsSink(parameters, self.OUTPUT,
+        # (sink, dest_id) = self.parameterAsSink(parameters, self.OUTPUT,
         #        context, source.fields(), source.wkbType(), source.sourceCrs())
 
         # Compute the number of steps to display within the progress bar and
@@ -107,15 +108,15 @@ class landsurveyAlgorithm(QgsProcessingAlgorithm):
         #total = 100.0 / source.featureCount() if source.featureCount() else 0
         #features = source.getFeatures()
 
-        #for current, feature in enumerate(features):
-            # Stop the algorithm if cancel button has been clicked
+        # for current, feature in enumerate(features):
+        # Stop the algorithm if cancel button has been clicked
         #    if feedback.isCanceled():
         #        break
 
-            # Add a feature in the sink
+        # Add a feature in the sink
         #    sink.addFeature(feature, QgsFeatureSink.FastInsert)
 
-            # Update the progress bar
+        # Update the progress bar
         #    feedback.setProgress(int(current * total))
 
         # Return the results of the algorithm. In this case our only result is
@@ -123,11 +124,11 @@ class landsurveyAlgorithm(QgsProcessingAlgorithm):
         # algorithms may return multiple feature sinks, calculated numeric
         # statistics, etc. These should all be included in the returned
         # dictionary, with keys matching the feature corresponding parameter
-        # or output name 
+        # or output name
         ret = dict()
         ret['INPUT'] = source
         ret['QLSC'] = qlscfile
-        return ret #{self.OUTPUT: dest_id}
+        return ret  # {self.OUTPUT: dest_id}
 
     def name(self):
         """

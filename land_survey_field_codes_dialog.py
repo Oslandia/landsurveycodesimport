@@ -77,32 +77,35 @@ class LandSurveyFieldCodesDialog(QtWidgets.QMainWindow, FORM_CLASS):
         self.__new()
 
         for item in AVAILABLE_CODE:
-                if item['available']:
-                        self.mGeometry.addItem(item['name'], item)
-                        self.__geometryChanged()
+            if item['available']:
+                self.mGeometry.addItem(item['name'], item)
+                self.__geometryChanged()
 
         self.mLayerAllPoints.setFilters(QgsMapLayerProxyModel.PointLayer)
         self.mLayerErrorPoints.setFilters(QgsMapLayerProxyModel.PointLayer)
 
         self.mAllPoints.stateChanged.connect(
-                lambda: self.__specialPoints(self.mAllPoints,
-                                             self.mGeoPackageAllPoints,
-                                             self.mLayerAllPoints))
+            lambda: self.__specialPoints(self.mAllPoints,
+                                         self.mGeoPackageAllPoints,
+                                         self.mLayerAllPoints))
         self.mErrorPoints.stateChanged.connect(
-                lambda: self.__specialPoints(self.mErrorPoints,
-                                             self.mGeoPackageErrorPoints,
-                                             self.mLayerErrorPoints))
+            lambda: self.__specialPoints(self.mErrorPoints,
+                                         self.mGeoPackageErrorPoints,
+                                         self.mLayerErrorPoints))
 
         self.mComboCodeSeparator.currentIndexChanged.connect(
-                lambda: self.__checkSeparator(self.mComboCodeSeparator,
-                                              self.mComboParameterSeparator))
+            lambda: self.__checkSeparator(self.mComboCodeSeparator,
+                                          self.mComboParameterSeparator))
         self.mComboParameterSeparator.currentIndexChanged.connect(
-                lambda: self.__checkSeparator(self.mComboParameterSeparator,
-                                              self.mComboCodeSeparator))
+            lambda: self.__checkSeparator(self.mComboParameterSeparator,
+                                          self.mComboCodeSeparator))
 
-        self.mGeoPackage.fileChanged.connect(lambda: self.__changedGeoPackage(self.mGeoPackage.filePath(), self.mLayerOutput))
-        self.mGeoPackageAllPoints.fileChanged.connect(lambda: self.__changedGeoPackage(self.mGeoPackageAllPoints.filePath(), self.mLayerAllPoints))
-        self.mGeoPackageErrorPoints.fileChanged.connect(lambda: self.__changedGeoPackage(self.mGeoPackageErrorPoints.filePath(), self.mLayerErrorPoints))
+        self.mGeoPackage.fileChanged.connect(lambda: self.__changedGeoPackage(
+            self.mGeoPackage.filePath(), self.mLayerOutput))
+        self.mGeoPackageAllPoints.fileChanged.connect(lambda: self.__changedGeoPackage(
+            self.mGeoPackageAllPoints.filePath(), self.mLayerAllPoints))
+        self.mGeoPackageErrorPoints.fileChanged.connect(lambda: self.__changedGeoPackage(
+            self.mGeoPackageErrorPoints.filePath(), self.mLayerErrorPoints))
 
         self.mGeometry.currentIndexChanged.connect(self.__geometryChanged)
         self.mLayerOutput.currentIndexChanged.connect(self.__emptyRow)
@@ -116,17 +119,17 @@ class LandSurveyFieldCodesDialog(QtWidgets.QMainWindow, FORM_CLASS):
         self.mComboCode.currentIndexChanged.connect(self.__codeChanged)
 
         self.actionClose.triggered.connect(
-                self.close)
+            self.close)
         self.action_New.triggered.connect(
-                self.__new)
+            self.__new)
         self.action_Save.triggered.connect(
-                self.__saveCodificationFile)
+            self.__saveCodificationFile)
         self.actionSaveAs.triggered.connect(
-                lambda: self.__saveCodificationFileAs(
-                        QtWidgets.QFileDialog.getSaveFileName(
-                                None, tr("Save File"),
-                                QDir.homePath(),
-                                "Qgis LandSurvey Code Config (*.qlsc)")))
+            lambda: self.__saveCodificationFileAs(
+                QtWidgets.QFileDialog.getSaveFileName(
+                    None, tr("Save File"),
+                    QDir.homePath(),
+                    "Qgis LandSurvey Code Config (*.qlsc)")))
 
         self.action_Open.triggered.connect(self.__openCodification)
 
@@ -181,12 +184,12 @@ class LandSurveyFieldCodesDialog(QtWidgets.QMainWindow, FORM_CLASS):
             return True
 
         choice = QtWidgets.QMessageBox.question(
-                    self,
-                    tr('Save the project?'),
-                    tr("Do you want to save the project?"),
-                    QtWidgets.QMessageBox.Yes |
-                    QtWidgets.QMessageBox.No |
-                    QtWidgets.QMessageBox.Cancel)
+            self,
+            tr('Save the project?'),
+            tr("Do you want to save the project?"),
+            QtWidgets.QMessageBox.Yes |
+            QtWidgets.QMessageBox.No |
+            QtWidgets.QMessageBox.Cancel)
         if choice == QtWidgets.QMessageBox.Yes:
             self.__saveCodificationFile()
         elif choice == QtWidgets.QMessageBox.Cancel:
@@ -202,9 +205,9 @@ class LandSurveyFieldCodesDialog(QtWidgets.QMainWindow, FORM_CLASS):
             return
 
         codification = QtWidgets.QFileDialog.getOpenFileName(
-                            None, tr("Open File"),
-                            QDir.homePath(),
-                            "Qgis LandSurvey Code Config (*.qlsc)")
+            None, tr("Open File"),
+            QDir.homePath(),
+            "Qgis LandSurvey Code Config (*.qlsc)")
 
         saveName = codification[0]
 
@@ -217,9 +220,9 @@ class LandSurveyFieldCodesDialog(QtWidgets.QMainWindow, FORM_CLASS):
                 code = yaml.load(stream)
         except:
             QtWidgets.QMessageBox.warning(
-                    self,
-                    tr('Error opening the file'),
-                    tr("Can't open the file {}".format(saveName)))
+                self,
+                tr('Error opening the file'),
+                tr("Can't open the file {}".format(saveName)))
             return
 
         try:
@@ -229,7 +232,8 @@ class LandSurveyFieldCodesDialog(QtWidgets.QMainWindow, FORM_CLASS):
                 try:
                     layerAllPoints = self.__getPath(code['AllPoints']['Layer'])
                     self.mGeoPackageAllPoints.setFilePath(layerAllPoints)
-                    self.__changedGeoPackage(layerAllPoints, self.mLayerAllPoints)
+                    self.__changedGeoPackage(
+                        layerAllPoints, self.mLayerAllPoints)
 
                     layers = self.__getLayersFromProject()
                     sources = [s.publicSource() for
@@ -245,9 +249,11 @@ class LandSurveyFieldCodesDialog(QtWidgets.QMainWindow, FORM_CLASS):
             self.mErrorPoints.setChecked(checked)
             if checked:
                 try:
-                    layerErrorPoints = self.__getPath(code['ErrorPoints']['Layer'])
+                    layerErrorPoints = self.__getPath(
+                        code['ErrorPoints']['Layer'])
                     self.mGeoPackageErrorPoints.setFilePath(layerErrorPoints)
-                    self.__changedGeoPackage(layerErrorPoints, self.mLayerErrorPoints)
+                    self.__changedGeoPackage(
+                        layerErrorPoints, self.mLayerErrorPoints)
 
                     layers = self.__getLayersFromProject()
                     sources = [s.publicSource() for
@@ -260,9 +266,9 @@ class LandSurveyFieldCodesDialog(QtWidgets.QMainWindow, FORM_CLASS):
                     self.mErrorPoints.setChecked(False)
 
             self.mComboParameterSeparator.setCurrentText(
-                    code['ParameterSeparator'])
+                code['ParameterSeparator'])
             self.mComboCodeSeparator.setCurrentText(
-                    code['CodeSeparator'])
+                code['CodeSeparator'])
 
             savedCode = code['Codification']
             keysList = list(savedCode.keys())
@@ -283,8 +289,8 @@ class LandSurveyFieldCodesDialog(QtWidgets.QMainWindow, FORM_CLASS):
             self.saveName = saveName
 
             self.setWindowTitle(
-                    WINDOWTITLE +
-                    os.path.splitext(os.path.basename(saveName))[0])
+                WINDOWTITLE +
+                os.path.splitext(os.path.basename(saveName))[0])
 
             self.mComboCode.setCurrentIndex(0)
             self.__codeChanged(self.mComboCode.currentText())
@@ -303,17 +309,17 @@ class LandSurveyFieldCodesDialog(QtWidgets.QMainWindow, FORM_CLASS):
                       'ParameterSeparator':
                       self.mComboParameterSeparator.currentText(),
                       'AllPoints': {
-                        'isChecked':
-                        self.mAllPoints.isChecked(),
-                        'Layer':
-                        self.__testLayer(self.mLayerAllPoints) if
-                        self.mAllPoints.isChecked() else ''},
+                          'isChecked':
+                          self.mAllPoints.isChecked(),
+                          'Layer':
+                          self.__testLayer(self.mLayerAllPoints) if
+                          self.mAllPoints.isChecked() else ''},
                       'ErrorPoints': {
-                        'isChecked':
-                        self.mErrorPoints.isChecked(),
-                        'Layer':
-                        self.__testLayer(self.mLayerErrorPoints) if
-                        self.mErrorPoints.isChecked() else ''},
+                          'isChecked':
+                          self.mErrorPoints.isChecked(),
+                          'Layer':
+                          self.__testLayer(self.mLayerErrorPoints) if
+                          self.mErrorPoints.isChecked() else ''},
                       'Codification': self.savedCodes}
 
         try:
@@ -324,13 +330,13 @@ class LandSurveyFieldCodesDialog(QtWidgets.QMainWindow, FORM_CLASS):
             self.saveName = saveName
 
             self.setWindowTitle(
-                    WINDOWTITLE +
-                    os.path.splitext(os.path.basename(saveName))[0])
+                WINDOWTITLE +
+                os.path.splitext(os.path.basename(saveName))[0])
         except:
             QtWidgets.QMessageBox.warning(
-                    self,
-                    tr('Error saving the file'),
-                    tr("Can't save the file {}".format(saveName)))
+                self,
+                tr('Error saving the file'),
+                tr("Can't save the file {}".format(saveName)))
 
     def __saveCodificationFile(self):
         """
@@ -339,9 +345,9 @@ class LandSurveyFieldCodesDialog(QtWidgets.QMainWindow, FORM_CLASS):
         if self.saveName is None:
             self.__saveCodificationFileAs(
                 QtWidgets.QFileDialog.getSaveFileName(
-                        None, tr("Save File"),
-                        QDir.homePath(),
-                        "Qgis LandSurvey Code Config (*.qlsc)"))
+                    None, tr("Save File"),
+                    QDir.homePath(),
+                    "Qgis LandSurvey Code Config (*.qlsc)"))
         else:
             self.__saveFile(self.saveName)
 
@@ -465,8 +471,8 @@ class LandSurveyFieldCodesDialog(QtWidgets.QMainWindow, FORM_CLASS):
         """
         contents = []
         for i in range(self.mTableWidget.rowCount()):
-            contents.append((self.mTableWidget.cellWidget(i,0).currentText(),
-                            self.mTableWidget.cellWidget(i,1).currentText()))
+            contents.append((self.mTableWidget.cellWidget(i, 0).currentText(),
+                             self.mTableWidget.cellWidget(i, 1).currentText()))
         return contents
 
     def __setTableContents(self, contents):
@@ -476,8 +482,8 @@ class LandSurveyFieldCodesDialog(QtWidgets.QMainWindow, FORM_CLASS):
         self.__emptyRow()
         for i, c in enumerate(contents):
             self.__addRow()
-            self.mTableWidget.cellWidget(i,0).setCurrentText(c[0])
-            self.mTableWidget.cellWidget(i,1).setExpression(c[1])
+            self.mTableWidget.cellWidget(i, 0).setCurrentText(c[0])
+            self.mTableWidget.cellWidget(i, 1).setExpression(c[1])
 
     def __cleanCodification(self):
         """
@@ -498,10 +504,10 @@ class LandSurveyFieldCodesDialog(QtWidgets.QMainWindow, FORM_CLASS):
         Save the current codification into the dictionnary.
         """
         code = {
-                'Description': self.mDescription.text(),
-                'GeometryType': self.__getDataGeometry('code'),
-                'Layer': self.__testLayer(self.mLayerOutput),
-                'Attributes': self.__getTableContents()}
+            'Description': self.mDescription.text(),
+            'GeometryType': self.__getDataGeometry('code'),
+            'Layer': self.__testLayer(self.mLayerOutput),
+            'Attributes': self.__getTableContents()}
         self.savedCodes[self.mComboCode.currentText()] = code
 
         if self.mComboCode.findText(self.mComboCode.currentText()) == -1:
@@ -554,11 +560,12 @@ class LandSurveyFieldCodesDialog(QtWidgets.QMainWindow, FORM_CLASS):
                 index = sources.index(code['Layer'])
                 self.__setGeoPackage(self.__getPath(code['Layer']))
                 self.mDescription.setText(code['Description'])
-                self.mGeometry.setCurrentIndex(self.__getIndexGeometryType(code['GeometryType']))
+                self.mGeometry.setCurrentIndex(
+                    self.__getIndexGeometryType(code['GeometryType']))
                 self.mLayerOutput.setCurrentText(layers[index].name())
                 self.__setTableContents(code['Attributes'])
             except ValueError:
                 QtWidgets.QMessageBox.warning(
-                        self,
-                        tr('Error changing the code'),
-                        tr("Can't change the code."))
+                    self,
+                    tr('Error changing the code'),
+                    tr("Can't change the code."))

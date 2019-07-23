@@ -49,7 +49,7 @@ class landsurveyProvider(QgsProcessingProvider):
         """
         Loads all algorithms belonging to this provider.
         """
-        self.addAlgorithm( landsurveyAlgorithm() )
+        self.addAlgorithm(landsurveyAlgorithm())
 
     def id(self):
         """

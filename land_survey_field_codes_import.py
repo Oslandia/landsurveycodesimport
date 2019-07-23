@@ -104,7 +104,7 @@ def geomFromType(points, parameters, geomtype, layerType):
                 return QgsGeometry(geom.toPolygon())
         except:
             return None
-    
+
     elif (geomtype == "CircleCenterDiameter"):
         try:
             geom = QgsCircle.fromCenterDiameter(QgsPoint(*[float(f) for
@@ -118,7 +118,7 @@ def geomFromType(points, parameters, geomtype, layerType):
                 return QgsGeometry(geom.toPolygon())
         except:
             return None
-    
+
     elif (geomtype == "Square2Points"):
         try:
             geom = QgsRegularPolygon(QgsPoint(*[float(f) for f in points[0]]),
@@ -135,8 +135,9 @@ def geomFromType(points, parameters, geomtype, layerType):
     elif (geomtype == "Square2Diagonal"):
         try:
             geom = QgsQuadrilateral.squareFromDiagonal(QgsPoint(*[float(f) for f in points[0]]),
-                                     QgsPoint(*[float(f) for f in points[1]])
-                                     )
+                                                       QgsPoint(
+                                                           *[float(f) for f in points[1]])
+                                                       )
             if layerType == 0:
                 return QgsGeometry(geom.toPolygon().centroid())
             elif layerType == 1:
@@ -151,7 +152,8 @@ def geomFromType(points, parameters, geomtype, layerType):
             p1 = QgsPoint(*[float(f) for f in points[1]])
             azimuth = p0.azimuth(p1)
             distance = float(parameters[0])
-            geom = QgsQuadrilateral(p0, p1, p1.project(distance, azimuth + 90.0), p0.project(distance, azimuth + 90.0))
+            geom = QgsQuadrilateral(p0, p1, p1.project(
+                distance, azimuth + 90.0), p0.project(distance, azimuth + 90.0))
             if layerType == 0:
                 return QgsGeometry(geom.toPolygon().centroid())
             elif layerType == 1:
@@ -164,10 +166,12 @@ def geomFromType(points, parameters, geomtype, layerType):
     elif (geomtype == "Rectangle3PointsDistance"):
         try:
             geom = QgsQuadrilateral.rectangleFrom3Points(QgsPoint(*[float(f) for f in points[0]]),
-                                     QgsPoint(*[float(f) for f in points[1]]),
-                                     QgsPoint(*[float(f) for f in points[2]]),
-                                     QgsQuadrilateral.Distance
-                                     )
+                                                         QgsPoint(
+                                                             *[float(f) for f in points[1]]),
+                                                         QgsPoint(
+                                                             *[float(f) for f in points[2]]),
+                                                         QgsQuadrilateral.Distance
+                                                         )
             if layerType == 0:
                 return QgsGeometry(geom.toPolygon().centroid())
             elif layerType == 1:
@@ -179,10 +183,12 @@ def geomFromType(points, parameters, geomtype, layerType):
     elif (geomtype == "Rectangle3PointsProjected"):
         try:
             geom = QgsQuadrilateral.rectangleFrom3Points(QgsPoint(*[float(f) for f in points[0]]),
-                                     QgsPoint(*[float(f) for f in points[1]]),
-                                     QgsPoint(*[float(f) for f in points[2]]),
-                                     QgsQuadrilateral.Projected
-                                     )
+                                                         QgsPoint(
+                                                             *[float(f) for f in points[1]]),
+                                                         QgsPoint(
+                                                             *[float(f) for f in points[2]]),
+                                                         QgsQuadrilateral.Projected
+                                                         )
             if layerType == 0:
                 return QgsGeometry(geom.toPolygon().centroid())
             elif layerType == 1:
@@ -206,11 +212,12 @@ def geomFromType(points, parameters, geomtype, layerType):
         curve = QgsCompoundCurve()
         for i, p in enumerate(points):
             if parameters[i] != '3':
-                if len(arc) > 0: # Arc haven't 3 points so points go in the straight line
+                if len(arc) > 0:  # Arc haven't 3 points so points go in the straight line
                     # TODO : LOG
                     line += arc
                     arc = []
-                if (len(line) == 0 and i+1 == len(points)) or arcBefore: # The final point, is a single point and must be a linestring, so we take the last point
+                # The final point, is a single point and must be a linestring, so we take the last point
+                if (len(line) == 0 and i+1 == len(points)) or arcBefore:
                     line.append(QgsPoint(*[float(f) for f in points[i-1]]))
                 line.append(QgsPoint(*[float(f) for f in p]))
                 arcBefore = False
@@ -225,8 +232,8 @@ def geomFromType(points, parameters, geomtype, layerType):
                     curve.addCurve(QgsCircularString(*arc))
                     arc = []
                 arcBefore = True
-       
-        if line: # Oh, only a linestring not yet parsed
+
+        if line:  # Oh, only a linestring not yet parsed
             curve.addCurve(QgsLineString(line))
 
         if layerType == 1:
@@ -278,7 +285,7 @@ def addRowInLayer(row, errTable, table_codif):
 
     geom = geomFromType(list(zip(*row[1:dim])), parameters,
                         codif['GeometryType'], layer.geometryType())
-  
+
     if codif['GeometryType'] == 'Line':
         orphanNodes = geom[1]
         geom = geom[0]
@@ -322,7 +329,7 @@ def addRowInLayer(row, errTable, table_codif):
 
         ret = layer.addFeature(newFeature)
         if not ret:
-           print(ret)
+            print(ret)
 
         ret = layer.commitChanges()
         if not ret:
@@ -401,7 +408,8 @@ def parseTable(table, errTable, table_codif, parameterSeparator='-'):
         code = row[CODE_POSITION]
         try:
             codif = table_codif['Codification'][code]
-            idx = [v["code"] for v in AVAILABLE_CODE].index(codif['GeometryType'])
+            idx = [v["code"]
+                   for v in AVAILABLE_CODE].index(codif['GeometryType'])
             nbPoints = AVAILABLE_CODE[idx]['nbpoints']
         except:
             #print('key error')
@@ -410,7 +418,7 @@ def parseTable(table, errTable, table_codif, parameterSeparator='-'):
         initRow = []
         initRow.append(row)
         n = 0
-        if nbPoints < 0: # Special case for line
+        if nbPoints < 0:  # Special case for line
             run = True
             arc = []
             while run:
@@ -500,7 +508,7 @@ def insertSpecialPoints(table, layerFile):
         for i in range(len(row[ATTRS_POSITION:])):
             newFeature['point_att'+str(i+1)] = row[ATTRS_POSITION+i]
         ret = layer.addFeature(newFeature)
-        #if not ret:
+        # if not ret:
        #     print(ret)
     layer.commitChanges()
 
@@ -636,7 +644,7 @@ def verifyCodification(code_file):
         assert(isinstance(c['Attributes'], list))
         assert(isinstance(c['Description'], str))
         assert(isinstance(c['GeometryType'], str) and
-           c['GeometryType'] in [v["code"] for v in AVAILABLE_CODE])
+               c['GeometryType'] in [v["code"] for v in AVAILABLE_CODE])
         assert(isinstance(c['Layer'], str)
                # TODO: check if layer exists
                )
