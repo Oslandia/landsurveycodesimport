@@ -31,6 +31,7 @@ __revision__ = '$Format:%H$'
 
 from qgis.core import QgsProcessingProvider
 from .land_survey_algorithm import landsurveyAlgorithm
+from .land_survey_qlsc2csv import landsurveyQLSC2CSV
 
 
 class landsurveyProvider(QgsProcessingProvider):
@@ -50,6 +51,7 @@ class landsurveyProvider(QgsProcessingProvider):
         Loads all algorithms belonging to this provider.
         """
         self.addAlgorithm(landsurveyAlgorithm())
+        self.addAlgorithm(landsurveyQLSC2CSV())
 
     def id(self):
         """
