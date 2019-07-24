@@ -41,7 +41,7 @@ from qgis.core import (QgsProcessing,
                        QgsVectorLayer, QgsWkbTypes)
 
 from .land_survey_utils import verifyCodification
-
+from .land_survey_field_codes_available_code import translatedNameFromGeometryType
 
 class landsurveyQLSC2CSV(QgsProcessingAlgorithm):
     """
@@ -84,10 +84,10 @@ class landsurveyQLSC2CSV(QgsProcessingAlgorithm):
             codif = code['Codification']
             with open(csv_path, 'w') as csv_file:
                 csv_writer = csv.writer(csv_file, dialect='excel-tab')
-                csv_writer.writerow(['code', 'source', 'pathname', 'dirname', 'basename', 'layername', 'internaltype', 'geometrytype', 'description', 'attributes'])
+                csv_writer.writerow(['code', 'source', 'pathname', 'dirname', 'basename', 'layername', 'internaltype', 'displaytype', 'geometrytype', 'description', 'attributes'])
                 for k in codif.keys():
                     codification = codif[k]
-                    csv_writer.writerow([k, codification['Layer'], *(self.__explodeSource(codification['Layer'])), codification['GeometryType'], self.__geometryFromSource(codification['Layer']), codification['Description'], self.__attributesToString(codification['Attributes']) ] )
+                    csv_writer.writerow([k, codification['Layer'], *(self.__explodeSource(codification['Layer'])), codification['GeometryType'], translatedNameFromGeometryType(codification['GeometryType']), self.__geometryFromSource(codification['Layer']), codification['Description'], self.__attributesToString(codification['Attributes']) ] )
 
 
     def initAlgorithm(self, config):

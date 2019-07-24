@@ -21,7 +21,7 @@
  ***************************************************************************/
 """
 
-from .land_survey_field_codes_available_code import AVAILABLE_CODE
+from .land_survey_field_codes_available_code import AVAILABLE_CODE, translatedName
 
 import os
 from pathlib import Path
@@ -78,7 +78,7 @@ class LandSurveyFieldCodesDialog(QtWidgets.QMainWindow, FORM_CLASS):
 
         for item in AVAILABLE_CODE:
             if item['available']:
-                self.mGeometry.addItem(item['name'], item)
+                self.mGeometry.addItem(translatedName(item['name']), item)
                 self.__geometryChanged()
 
         self.mLayerAllPoints.setFilters(QgsMapLayerProxyModel.PointLayer)
