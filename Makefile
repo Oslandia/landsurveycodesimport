@@ -41,6 +41,7 @@ SOURCES = \
 	__init__.py \
 	land_survey_field_codes.py land_survey_field_codes_dialog.py \
 	land_survey_algorithm.py land_survey_field_codes_available_code.py \
+	land_survey_qlsc2csv.py
 	
 
 PLUGINNAME = LandSurveyCodesImport
@@ -49,7 +50,8 @@ PY_FILES = \
 	__init__.py \
 	land_survey_field_codes.py land_survey_field_codes_dialog.py \
 	land_survey_algorithm.py land_survey_field_codes_available_code.py \
-	land_survey_field_codes_import.py land_survey_provider.py
+	land_survey_field_codes_import.py land_survey_provider.py \
+	land_survey_qlsc2csv.py
 
 UI_FILES = land_survey_field_codes_dialog_base.ui
 
