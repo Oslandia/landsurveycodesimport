@@ -30,8 +30,8 @@ __copyright__ = '(C) 2018 by Loïc Bartoletti'
 __revision__ = '$Format:%H$'
 
 from qgis.core import QgsProcessingProvider
-from .land_survey_algorithm import landsurveyAlgorithm
-from .land_survey_qlsc2csv import landsurveyQLSC2CSV
+from .processing.codification.land_survey_algorithm import landsurveyAlgorithm
+from .processing.export.land_survey_qlsc2csv import landsurveyQLSC2CSV
 
 
 class landsurveyProvider(QgsProcessingProvider):

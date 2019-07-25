@@ -40,8 +40,8 @@ from qgis.core import (QgsProcessing,
                        QgsProcessingParameterFileDestination,
                        QgsVectorLayer, QgsWkbTypes)
 
-from .land_survey_utils import verifyCodification
-from .land_survey_field_codes_available_code import translatedNameFromGeometryType
+from LandSurveyCodesImport.land_survey_utils import verifyCodification
+from LandSurveyCodesImport.land_survey_field_codes_available_code import translatedNameFromGeometryType
 
 class landsurveyQLSC2CSV(QgsProcessingAlgorithm):
     """
@@ -158,7 +158,7 @@ class landsurveyQLSC2CSV(QgsProcessingAlgorithm):
         contain lowercase alphanumeric characters only and no spaces or other
         formatting characters.
         """
-        return self.tr('Land survey')
+        return self.tr('Export')
 
     def tr(self, string):
         return QCoreApplication.translate('Processing', string)
