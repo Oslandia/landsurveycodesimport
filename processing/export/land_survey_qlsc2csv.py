@@ -65,17 +65,17 @@ class landsurveyQLSC2CSV(QgsProcessingAlgorithm):
     OUTPUT = 'OUTPUT'
 
     def __explodeSource(self, layersource):
-        pathname, layername = layersource.split('|')
-        layername = layername[len('layername='):]
+        try:
+            pathname, layername = layersource.split('|')
+            layername = layername[len('layername='):]
 
-        return (pathname, os.path.dirname(pathname), os.path.basename(pathname), layername)
+            return (pathname, os.path.dirname(pathname), os.path.basename(pathname), layername)
+        except:
+            return ('', '', '', '')
 
     def __geometryFromSource(self, layersource):
         l = QgsVectorLayer(layersource)
         return QgsWkbTypes.geometryDisplayString(l.geometryType())
-
-    def __attributesToString(self, attributes):
-        return r'\n'.join([str(t) for t in attributes])
 
     def qlsc2csv(self, qlsc_path, csv_path):
         with open(qlsc_path, 'r') as stream:
@@ -87,7 +87,19 @@ class landsurveyQLSC2CSV(QgsProcessingAlgorithm):
                 csv_writer.writerow(['code', 'source', 'pathname', 'dirname', 'basename', 'layername', 'internaltype', 'displaytype', 'geometrytype', 'description', 'attributes'])
                 for k in codif.keys():
                     codification = codif[k]
-                    csv_writer.writerow([k, codification['Layer'], *(self.__explodeSource(codification['Layer'])), codification['GeometryType'], translatedNameFromGeometryType(codification['GeometryType']), self.__geometryFromSource(codification['Layer']), codification['Description'], self.__attributesToString(codification['Attributes']) ] )
+                    csv_writer.writerow([k, codification['Layer'], *(self.__explodeSource(codification['Layer'])), codification['GeometryType'], translatedNameFromGeometryType(codification['GeometryType']), self.__geometryFromSource(codification['Layer']), codification['Description'], codification['Attributes'] ] )
+
+
+                # special points
+                param = code['AllPoints']
+                csv_writer.writerow(['', param['Layer'], *(self.__explodeSource(param['Layer'])), "AllPoints", self.tr("All points"), '', self.tr("Parameter for all points"), param["isChecked"]])
+                param = code['ErrorPoints']
+                csv_writer.writerow(['', param['Layer'], *(self.__explodeSource(param['Layer'])), "ErrorPoints", self.tr("Error points"), '', self.tr("Parameter for error points"), param["isChecked"]])
+                # code separator
+                param = code['CodeSeparator']
+                csv_writer.writerow(['', '', '', '', '', '', "CodeSeparator", self.tr("Code separator"), '', self.tr("Parameter for code separator"), param])
+                param = code['ParameterSeparator']
+                csv_writer.writerow(['', '', '', '', '', '', "ParameterSeparator", self.tr("Parameter separator"), '', self.tr("Parameter for parameter separator"), param])
 
 
     def initAlgorithm(self, config):
@@ -99,7 +111,7 @@ class landsurveyQLSC2CSV(QgsProcessingAlgorithm):
             QgsProcessingParameterFile(
                 self.QLSC,
                 self.tr('QLSC file'),
-                extension='qlsc'
+                extension='.qlsc'
             )
         )
 
@@ -108,7 +120,7 @@ class landsurveyQLSC2CSV(QgsProcessingAlgorithm):
             QgsProcessingParameterFileDestination(
                 self.OUTPUT,
                 self.tr('Output CSV'),
-                fileFilter='csv'
+                fileFilter='.csv'
             )
         )
 
@@ -134,14 +146,14 @@ class landsurveyQLSC2CSV(QgsProcessingAlgorithm):
         lowercase alphanumeric characters only and no spaces or other
         formatting characters.
         """
-        return 'Convert QLSC file to CSV file'
+        return 'qlsc2csv'
 
     def displayName(self):
         """
         Returns the translated algorithm name, which should be used for any
         user-visible display of the algorithm name.
         """
-        return self.tr(self.name())
+        return self.tr('Convert QLSC file to CSV file')
 
     def group(self):
         """
