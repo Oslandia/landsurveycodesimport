@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 LOCALES=$*
 
-PYTHON_FILES=`ls *.{py,ui}`
+PYTHON_FILES=" "
+for f in $(find . -name "*.py" -o -name "*.ui"); do
+	PYTHON_FILES+=$f
+	PYTHON_FILES+=" "
+done
 
 for LOCALE in ${LOCALES}
 do

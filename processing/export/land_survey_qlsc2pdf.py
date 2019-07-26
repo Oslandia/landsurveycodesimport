@@ -40,12 +40,13 @@ from qgis.core import (QgsProcessing,
                        QgsProcessingParameterFile,
                        QgsProcessingParameterFileDestination,
                        QgsProcessingMultiStepFeedback,
-                       QgsProcessingParameterEnum,
+                       QgsProcessingParameterString,
                        QgsProject,
                        QgsLayoutExporter,
                        Qgis)
 from qgis.gui import QgsMessageBar
 from qgis.utils import iface
+
 
 class landsurveyQLSC2PDF(QgsProcessingAlgorithm):
     def initAlgorithm(self, config):
@@ -53,26 +54,35 @@ class landsurveyQLSC2PDF(QgsProcessingAlgorithm):
         Here we define the inputs and output of the algorithm, along
         with some other properties.
         """
-        self.addParameter(QgsProcessingParameterFile('qlsc', 'qlsc', behavior=QgsProcessingParameterFile.File, extension='qlsc', defaultValue=None))
-        self.addParameter(QgsProcessingParameterFile('project', 'project', behavior=QgsProcessingParameterFile.File, extension='qgz', defaultValue=None))
-        self.addParameter(QgsProcessingParameterFileDestination('outputpdf', 'output_pdf', fileFilter='.pdf', defaultValue=None))
-        self.options=['detailed','simple']
-        self.addParameter(QgsProcessingParameterEnum('layout', 'layout', self.options, allowMultiple=False, defaultValue=1))
+        self.addParameter(QgsProcessingParameterFile('qlsc', self.tr('Codification file'),
+                          behavior=QgsProcessingParameterFile.File, extension='qlsc', defaultValue=None))
+        self.addParameter(QgsProcessingParameterFile('project', self.tr(
+            'Template project'), behavior=QgsProcessingParameterFile.File, extension='qgz', defaultValue=None))
+        self.addParameter(QgsProcessingParameterFileDestination(
+            'outputpdf', self.tr('Output PDF'), fileFilter='.pdf', defaultValue=None))
+        self.addParameter(QgsProcessingParameterString('layout', self.tr('Layout name'), multiLine=False, defaultValue='simple'))
 
     def generatePDF(self, project_path, layout_name, report_path):
         if not QgsProject.instance().read(project_path):
             return (False, self.tr("Cannot open the file '{}'".format(project_path)))
 
-        layout = QgsProject.instance().layoutManager().layoutByName(
+        layout=QgsProject.instance().layoutManager().layoutByName(
             layout_name)
         if not layout:
             return (False, self.tr("Cannot find layout '{}'".format(layout_name)))
 
-        exporter = QgsLayoutExporter(layout)
-        res = exporter.exportToPdf(report_path,
-                                   QgsLayoutExporter.PdfExportSettings())
+        # Is it an atlas?
+        exporter=QgsLayoutExporter(layout)
+        atlas = layout.atlas()
+        pdf_settings=QgsLayoutExporter(layout).PdfExportSettings()
+        if atlas.count() > 0:
+            res=exporter.exportToPdf(layout.atlas(), report_path,
+                pdf_settings)
+        else:
+            res=exporter.exportToPdf(report_path,
+                                   pdf_settings)
         if res != QgsLayoutExporter.Success:
-            
+
             return (False, self.tr("Cannot export to pdf"))
 
         return (True,)
@@ -84,50 +94,55 @@ class landsurveyQLSC2PDF(QgsProcessingAlgorithm):
         """
         # Use a multi-step feedback, so that individual child algorithm progress reports are adjusted for the
         # overall progress through the model
-        ret = dict()
-        ret['QLSC'] = parameters['qlsc']
-        ret['OUTPUT'] = ''
+        ret=dict()
+        ret['QLSC']=parameters['qlsc']
+        ret['OUTPUT']=''
 
         # Algorithm will open a new project, some verifications:
         if QgsProject.instance().isDirty():
-            iface.messageBar().pushMessage(self.tr("Unsaved project:"), self.tr("Save your works before run this algorithm"), level = Qgis.Critical)
+            iface.messageBar().pushMessage(self.tr("Unsaved project:"), self.tr(
+                "Save your works before run this algorithm"), level=Qgis.Critical)
             return ret
 
-        actualProject = QgsProject.instance().absoluteFilePath()
+        actualProject=QgsProject.instance().absoluteFilePath()
 
-        feedback = QgsProcessingMultiStepFeedback(2, ofeedback)
-        results = {}
-        outputs = {}
-        
+        feedback=QgsProcessingMultiStepFeedback(2, ofeedback)
+        results={}
+        outputs={}
+
         with tempfile.TemporaryDirectory() as tmpdirname:
-           
-            project_path =os.path.join(tmpdirname, 'project.qgz') 
-            csv_path =os.path.join(tmpdirname, 'codification.csv') 
+
+            project_path=os.path.join(tmpdirname, 'project.qgz')
+            csv_path=os.path.join(tmpdirname, 'codification.csv')
             shutil.copyfile(parameters['project'], project_path)
-            shutil.copyfile(os.path.join(os.path.dirname(parameters['project']), 'logo.svg'), os.path.join(tmpdirname, 'logo.svg'))
-            
-            alg_params = {
+            shutil.copyfile(os.path.join(os.path.dirname(
+                parameters['project']), 'logo.svg'), os.path.join(tmpdirname, 'logo.svg'))
+
+            alg_params={
                 'QLSC': parameters['qlsc'],
                 'OUTPUT': csv_path
             }
-            outputs['ConvertQlscFileToCsvFile'] = processing.run('landsurvey:qlsc2csv', alg_params, context=context, feedback=feedback, is_child_algorithm=True)
+            outputs['ConvertQlscFileToCsvFile']=processing.run(
+                'landsurvey:qlsc2csv', alg_params, context=context, feedback=feedback, is_child_algorithm=True)
 
             feedback.setCurrentStep(1)
             if feedback.isCanceled():
                 return {}
 
-            r = self.generatePDF(project_path, self.options[parameters['layout']], parameters['outputpdf'])
-       
+            r=self.generatePDF(
+                project_path, parameters['layout'], parameters['outputpdf'])
+
         if actualProject != '':
             QgsProject.instance().read(actualProject)
         else:
             QgsProject.instance().clear()
 
         if r[0]:
-            ret['OUTPUT'] = parameters['outputpdf']
+            ret['OUTPUT']=parameters['outputpdf']
         else:
-            iface.messageBar().pushMessage(self.tr("Cannot print layout"), r[1], level = Qgis.Critical)
-        
+            iface.messageBar().pushMessage(
+                self.tr("Cannot print layout"), r[1], level=Qgis.Critical)
+
         return ret
 
     def flags(self):

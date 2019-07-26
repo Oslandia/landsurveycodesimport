@@ -36,28 +36,20 @@ LRELEASE = lrelease
 #LRELEASE = lrelease-qt4
 
 
-# translation
-SOURCES = \
-	__init__.py \
-	land_survey_field_codes.py land_survey_field_codes_dialog.py \
-	land_survey_algorithm.py land_survey_field_codes_available_code.py \
-	land_survey_qlsc2csv.py
-	
-
 PLUGINNAME = LandSurveyCodesImport
 
 PY_FILES = \
 	__init__.py \
 	land_survey_field_codes.py land_survey_field_codes_dialog.py \
-	land_survey_algorithm.py land_survey_field_codes_available_code.py \
-	land_survey_field_codes_import.py land_survey_provider.py \
-	land_survey_qlsc2csv.py
+	land_survey_field_codes_available_code.py \
+	land_survey_provider.py \
+	land_survey_utils.py \
 
 UI_FILES = land_survey_field_codes_dialog_base.ui
 
 EXTRAS = metadata.txt icon.png
 
-EXTRA_DIRS =
+EXTRA_DIRS = processing
 
 COMPILED_RESOURCE_FILES = resources.py
 
@@ -117,6 +109,7 @@ deploy: compile doc
 	cp -vf $(UI_FILES) $(HOME)/$(QGISDIR)/python/plugins/$(PLUGINNAME)
 	cp -vf $(COMPILED_RESOURCE_FILES) $(HOME)/$(QGISDIR)/python/plugins/$(PLUGINNAME)
 	cp -vf $(EXTRAS) $(HOME)/$(QGISDIR)/python/plugins/$(PLUGINNAME)
+	cp -vfr $(EXTRA_DIRS) $(HOME)/$(QGISDIR)/python/plugins/$(PLUGINNAME)
 	cp -vfr i18n $(HOME)/$(QGISDIR)/python/plugins/$(PLUGINNAME)
 	cp -vfr $(HELP)/* $(HOME)/$(QGISDIR)/python/plugins/$(PLUGINNAME)/help
 	# Copy extra directories if any

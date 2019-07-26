@@ -110,8 +110,8 @@ class landsurveyQLSC2CSV(QgsProcessingAlgorithm):
         self.addParameter(
             QgsProcessingParameterFile(
                 self.QLSC,
-                self.tr('QLSC file'),
-                extension='.qlsc'
+                self.tr('Codification file'),
+                extension='qlsc'
             )
         )
 
@@ -120,7 +120,7 @@ class landsurveyQLSC2CSV(QgsProcessingAlgorithm):
             QgsProcessingParameterFileDestination(
                 self.OUTPUT,
                 self.tr('Output CSV'),
-                fileFilter='.csv'
+                fileFilter='csv'
             )
         )
 
