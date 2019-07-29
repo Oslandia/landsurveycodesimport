@@ -1,0 +1,224 @@
+<Layout units="mm" printResolution="300" worldFileMap="" name="detailed">
+ <Snapper tolerance="5" snapToGuides="1" snapToItems="1" snapToGrid="0"/>
+ <Grid offsetUnits="mm" offsetX="0" resUnits="mm" resolution="10" offsetY="0"/>
+ <PageCollection>
+  <symbol type="fill" force_rhr="0" alpha="1" name="" clip_to_extent="1">
+   <layer pass="0" class="SimpleFill" locked="0" enabled="1">
+    <prop k="border_width_map_unit_scale" v="3x:0,0,0,0,0,0"/>
+    <prop k="color" v="255,255,255,255"/>
+    <prop k="joinstyle" v="miter"/>
+    <prop k="offset" v="0,0"/>
+    <prop k="offset_map_unit_scale" v="3x:0,0,0,0,0,0"/>
+    <prop k="offset_unit" v="MM"/>
+    <prop k="outline_color" v="35,35,35,255"/>
+    <prop k="outline_style" v="no"/>
+    <prop k="outline_width" v="0.26"/>
+    <prop k="outline_width_unit" v="MM"/>
+    <prop k="style" v="solid"/>
+    <data_defined_properties>
+     <Option type="Map">
+      <Option value="" type="QString" name="name"/>
+      <Option name="properties"/>
+      <Option value="collection" type="QString" name="type"/>
+     </Option>
+    </data_defined_properties>
+   </layer>
+  </symbol>
+  <LayoutItem blendMode="0" size="210,297,mm" itemRotation="0" excludeFromExports="0" type="65638" uuid="{db6da962-ff31-4051-bc34-fc1461fc9bdd}" id="" referencePoint="0" opacity="1" groupUuid="" frame="false" templateUuid="{db6da962-ff31-4051-bc34-fc1461fc9bdd}" zValue="0" positionLock="false" visibility="1" frameJoinStyle="miter" background="true" position="0,0,mm" positionOnPage="0,0,mm" outlineWidthM="0.3,mm">
+   <FrameColor green="0" alpha="255" red="0" blue="0"/>
+   <BackgroundColor green="255" alpha="255" red="255" blue="255"/>
+   <LayoutObject>
+    <dataDefinedProperties>
+     <Option type="Map">
+      <Option value="" type="QString" name="name"/>
+      <Option name="properties"/>
+      <Option value="collection" type="QString" name="type"/>
+     </Option>
+    </dataDefinedProperties>
+    <customproperties/>
+   </LayoutObject>
+  </LayoutItem>
+  <GuideCollection visible="1"/>
+ </PageCollection>
+ <LayoutItem blendMode="0" size="203.172,34.2402,mm" multiFrameTemplateUuid="{78604fc9-07fc-46bf-b3e9-3e34fdef859a}" itemRotation="0" excludeFromExports="0" sectionX="0" type="65647" uuid="{614f4813-e040-4682-9f07-df1ed1b8d293}" id="" referencePoint="0" opacity="1" multiFrame="{78604fc9-07fc-46bf-b3e9-3e34fdef859a}" groupUuid="" sectionWidth="203.172" hideBackgroundIfEmpty="0" frame="false" sectionY="0" templateUuid="{614f4813-e040-4682-9f07-df1ed1b8d293}" zValue="5" sectionHeight="34.2402" positionLock="false" visibility="1" frameJoinStyle="miter" hidePageIfEmpty="0" background="false" position="3.11992,56.2832,mm" positionOnPage="3.11992,56.2832,mm" outlineWidthM="0.3,mm">
+  <FrameColor green="0" alpha="255" red="0" blue="0"/>
+  <BackgroundColor green="255" alpha="255" red="255" blue="255"/>
+  <LayoutObject>
+   <dataDefinedProperties>
+    <Option type="Map">
+     <Option value="" type="QString" name="name"/>
+     <Option name="properties"/>
+     <Option value="collection" type="QString" name="type"/>
+    </Option>
+   </dataDefinedProperties>
+   <customproperties/>
+  </LayoutObject>
+ </LayoutItem>
+ <LayoutItem blendMode="0" size="137.121,40.0353,mm" multiFrameTemplateUuid="{1004f307-6b5e-43b3-be8f-1e21c5a99c5d}" itemRotation="0" excludeFromExports="0" sectionX="0" type="65647" uuid="{10686b35-1378-4cfe-a4a8-962a09c945c6}" id="" referencePoint="0" opacity="1" multiFrame="{1004f307-6b5e-43b3-be8f-1e21c5a99c5d}" groupUuid="" sectionWidth="137.121" hideBackgroundIfEmpty="0" frame="false" sectionY="0" templateUuid="{10686b35-1378-4cfe-a4a8-962a09c945c6}" zValue="5" sectionHeight="40.0353" positionLock="false" visibility="1" frameJoinStyle="miter" hidePageIfEmpty="0" background="false" position="9.06913,16.2478,mm" positionOnPage="9.06913,16.2478,mm" outlineWidthM="0.3,mm">
+  <FrameColor green="0" alpha="255" red="0" blue="0"/>
+  <BackgroundColor green="255" alpha="255" red="255" blue="255"/>
+  <LayoutObject>
+   <dataDefinedProperties>
+    <Option type="Map">
+     <Option value="" type="QString" name="name"/>
+     <Option name="properties"/>
+     <Option value="collection" type="QString" name="type"/>
+    </Option>
+   </dataDefinedProperties>
+   <customproperties/>
+  </LayoutObject>
+ </LayoutItem>
+ <LayoutItem blendMode="0" size="203.172,203.746,mm" multiFrameTemplateUuid="{8b878ab8-a13a-41bf-bf54-d7fd5ddda963}" itemRotation="0" excludeFromExports="0" sectionX="0" type="65647" uuid="{c16ec69c-92b8-4c9d-a8a3-9d2b3aff38e5}" id="" referencePoint="0" opacity="1" multiFrame="{8b878ab8-a13a-41bf-bf54-d7fd5ddda963}" groupUuid="" sectionWidth="203.172" hideBackgroundIfEmpty="0" frame="false" sectionY="0" templateUuid="{c16ec69c-92b8-4c9d-a8a3-9d2b3aff38e5}" zValue="4" sectionHeight="203.746" positionLock="false" visibility="1" frameJoinStyle="miter" hidePageIfEmpty="0" background="false" position="3.11992,90.5233,mm" positionOnPage="3.11992,90.5233,mm" outlineWidthM="0.3,mm">
+  <FrameColor green="0" alpha="255" red="0" blue="0"/>
+  <BackgroundColor green="255" alpha="255" red="255" blue="255"/>
+  <LayoutObject>
+   <dataDefinedProperties>
+    <Option type="Map">
+     <Option value="" type="QString" name="name"/>
+     <Option name="properties"/>
+     <Option value="collection" type="QString" name="type"/>
+    </Option>
+   </dataDefinedProperties>
+   <customproperties/>
+  </LayoutObject>
+ </LayoutItem>
+ <LayoutItem htmlState="0" blendMode="0" size="39.0378,8.2252,mm" itemRotation="0" excludeFromExports="0" type="65641" uuid="{14cb309c-3944-4f96-a1b6-f1abe276cd6c}" marginY="0" id="" referencePoint="0" opacity="1" groupUuid="" labelText="Codficiation table" frame="false" templateUuid="{14cb309c-3944-4f96-a1b6-f1abe276cd6c}" zValue="2" positionLock="false" visibility="1" halign="8" valign="32" frameJoinStyle="miter" background="false" position="9.06913,8.02265,mm" marginX="0" positionOnPage="9.06913,8.02265,mm" outlineWidthM="0.3,mm">
+  <FrameColor green="0" alpha="255" red="0" blue="0"/>
+  <BackgroundColor green="255" alpha="255" red="255" blue="255"/>
+  <LayoutObject>
+   <dataDefinedProperties>
+    <Option type="Map">
+     <Option value="" type="QString" name="name"/>
+     <Option name="properties"/>
+     <Option value="collection" type="QString" name="type"/>
+    </Option>
+   </dataDefinedProperties>
+   <customproperties/>
+  </LayoutObject>
+  <LabelFont style="" description="DejaVu Sans,10,-1,5,75,0,0,0,0,0"/>
+  <FontColor green="0" red="0" blue="0"/>
+ </LayoutItem>
+ <LayoutItem blendMode="0" size="60.1018,36.0611,mm" pictureHeight="31.505" pictureRotation="0" svgBorderColor="0,0,0,255" itemRotation="0" excludeFromExports="0" mapUuid="" type="65640" uuid="{3c81afe7-e554-4908-850c-6b32b976bce6}" id="logo" referencePoint="0" opacity="1" resizeMode="0" groupUuid="" svgBorderWidth="0.2" frame="false" templateUuid="{3c81afe7-e554-4908-850c-6b32b976bce6}" northMode="0" zValue="2" anchorPoint="0" positionLock="false" visibility="1" frameJoinStyle="miter" background="false" position="146.19,8.02265,mm" northOffset="0" positionOnPage="146.19,8.02265,mm" outlineWidthM="0.3,mm" file="/usr/home/lbartoletti/prog/Oslandia/landsurveycodesimport/processing/export/codificationLayoutTemplate/logo.svg" svgFillColor="255,255,255,255" pictureWidth="60.1018">
+  <FrameColor green="0" alpha="255" red="0" blue="0"/>
+  <BackgroundColor green="255" alpha="255" red="255" blue="255"/>
+  <LayoutObject>
+   <dataDefinedProperties>
+    <Option type="Map">
+     <Option value="" type="QString" name="name"/>
+     <Option type="Map" name="properties">
+      <Option type="Map" name="dataDefinedSource">
+       <Option value="false" type="bool" name="active"/>
+       <Option value="logo_path(@project_path,'logo.svg')" type="QString" name="expression"/>
+       <Option value="3" type="int" name="type"/>
+      </Option>
+     </Option>
+     <Option value="collection" type="QString" name="type"/>
+    </Option>
+   </dataDefinedProperties>
+   <customproperties/>
+  </LayoutObject>
+ </LayoutItem>
+ <LayoutMultiFrame vectorLayerName="codification" contentFontColor="0,0,0,255" cellMargin="1" source="0" horizontalGrid="1" vectorLayerSource="file:///home/lbartoletti/prog/Oslandia/landsurveycodesimport/processing/export/codificationLayoutTemplate/codification.csv?type=csv&amp;delimiter=%5Ct&amp;detectTypes=yes&amp;geomType=none&amp;subsetIndex=no&amp;watchFile=yes" type="65649" wrapBehavior="0" uuid="{a9eb8d57-18e4-430a-9e68-60023ccc95be}" maxFeatures="30" showOnlyVisibleFeatures="0" showEmptyRows="0" filterFeatures="false" filterToAtlasIntersection="0" resizeMode="0" emptyTableMessage="" emptyTableMode="0" wrapString="" gridStrokeWidth="0.5" verticalGrid="1" gridColor="0,0,0,255" headerHAlignment="0" relationId="" templateUuid="{a9eb8d57-18e4-430a-9e68-60023ccc95be}" headerMode="0" backgroundColor="255,255,255,255" headerFontColor="0,0,0,255" showUniqueRowsOnly="0" vectorLayerProvider="delimitedtext" showGrid="1" featureFilter="" vectorLayer="codification_e1960667_0aaa_4188_888c_0a1cde245097">
+  <LayoutObject>
+   <dataDefinedProperties>
+    <Option type="Map">
+     <Option value="" type="QString" name="name"/>
+     <Option name="properties"/>
+     <Option value="collection" type="QString" name="type"/>
+    </Option>
+   </dataDefinedProperties>
+   <customproperties/>
+  </LayoutObject>
+  <headerFontProperties style="" description="DejaVu Sans,10,-1,5,75,0,0,0,0,0"/>
+  <contentFontProperties style="" description="DejaVu Sans,10,-1,5,75,0,0,0,0,0"/>
+  <displayColumns>
+   <column sortOrder="0" vAlignment="128" hAlignment="1" attribute="code" heading="code" width="0" sortByRank="0">
+    <backgroundColor green="0" alpha="0" red="0" blue="0"/>
+   </column>
+   <column sortOrder="0" vAlignment="128" hAlignment="1" attribute="source" heading="source" width="0" sortByRank="0">
+    <backgroundColor green="0" alpha="0" red="0" blue="0"/>
+   </column>
+   <column sortOrder="0" vAlignment="128" hAlignment="1" attribute="pathname" heading="pathname" width="0" sortByRank="0">
+    <backgroundColor green="0" alpha="0" red="0" blue="0"/>
+   </column>
+   <column sortOrder="0" vAlignment="128" hAlignment="1" attribute="dirname" heading="dirname" width="0" sortByRank="0">
+    <backgroundColor green="0" alpha="0" red="0" blue="0"/>
+   </column>
+   <column sortOrder="0" vAlignment="128" hAlignment="1" attribute="basename" heading="basename" width="0" sortByRank="0">
+    <backgroundColor green="0" alpha="0" red="0" blue="0"/>
+   </column>
+   <column sortOrder="0" vAlignment="128" hAlignment="1" attribute="layername" heading="layername" width="0" sortByRank="0">
+    <backgroundColor green="0" alpha="0" red="0" blue="0"/>
+   </column>
+   <column sortOrder="0" vAlignment="128" hAlignment="1" attribute="internaltype" heading="internaltype" width="0" sortByRank="0">
+    <backgroundColor green="0" alpha="0" red="0" blue="0"/>
+   </column>
+   <column sortOrder="0" vAlignment="128" hAlignment="1" attribute="displaytype" heading="displaytype" width="0" sortByRank="0">
+    <backgroundColor green="0" alpha="0" red="0" blue="0"/>
+   </column>
+   <column sortOrder="0" vAlignment="128" hAlignment="1" attribute="geometrytype" heading="geometrytype" width="0" sortByRank="0">
+    <backgroundColor green="0" alpha="0" red="0" blue="0"/>
+   </column>
+   <column sortOrder="0" vAlignment="128" hAlignment="1" attribute="description" heading="description" width="0" sortByRank="0">
+    <backgroundColor green="0" alpha="0" red="0" blue="0"/>
+   </column>
+   <column sortOrder="0" vAlignment="128" hAlignment="1" attribute="attributes" heading="attributes" width="0" sortByRank="0">
+    <backgroundColor green="0" alpha="0" red="0" blue="0"/>
+   </column>
+  </displayColumns>
+  <cellStyles>
+   <oddColumns cellBackgroundColor="255,255,255,255" enabled="0"/>
+   <evenColumns cellBackgroundColor="255,255,255,255" enabled="0"/>
+   <oddRows cellBackgroundColor="255,255,255,255" enabled="0"/>
+   <evenRows cellBackgroundColor="255,255,255,255" enabled="0"/>
+   <firstColumn cellBackgroundColor="255,255,255,255" enabled="0"/>
+   <lastColumn cellBackgroundColor="255,255,255,255" enabled="0"/>
+   <headerRow cellBackgroundColor="255,255,255,255" enabled="0"/>
+   <firstRow cellBackgroundColor="255,255,255,255" enabled="0"/>
+   <lastRow cellBackgroundColor="255,255,255,255" enabled="0"/>
+  </cellStyles>
+ </LayoutMultiFrame>
+ <LayoutMultiFrame contentMode="1" url="" type="65648" stylesheet="table, th, td {&#xa;  border: 1px solid black;&#xa;}" resizeMode="1" useSmartBreaks="true" templateUuid="{b0c1728f-d3ad-4908-b9d8-ed43014cf7b4}" evaluateExpressions="true" html="[%tableHTMLfromAttributes(&quot;attributes&quot;, 'Field', 'Expression', 'No attributes')%]" uuid="{b0c1728f-d3ad-4908-b9d8-ed43014cf7b4}" stylesheetEnabled="true" maxBreakDistance="10">
+  <childFrame templateUuid="{c16ec69c-92b8-4c9d-a8a3-9d2b3aff38e5}" uuid="{c16ec69c-92b8-4c9d-a8a3-9d2b3aff38e5}"/>
+  <LayoutObject>
+   <dataDefinedProperties>
+    <Option type="Map">
+     <Option value="" type="QString" name="name"/>
+     <Option name="properties"/>
+     <Option value="collection" type="QString" name="type"/>
+    </Option>
+   </dataDefinedProperties>
+   <customproperties/>
+  </LayoutObject>
+ </LayoutMultiFrame>
+ <LayoutMultiFrame contentMode="1" url="" type="65648" stylesheet="" resizeMode="0" useSmartBreaks="true" templateUuid="{26b31537-a1cf-4e3e-8833-65a604ca97d7}" evaluateExpressions="true" html="&lt;h1>Code: [% &quot;code&quot; %]&lt;/h1>&#xa;&lt;h2>Geometry type: [% &quot;displaytype&quot; %]&lt;/h2>&#xa;&lt;h2>Vector type: [% &quot;geometrytype&quot; %]&lt;/h2>&#xa;" uuid="{26b31537-a1cf-4e3e-8833-65a604ca97d7}" stylesheetEnabled="false" maxBreakDistance="10">
+  <childFrame templateUuid="{10686b35-1378-4cfe-a4a8-962a09c945c6}" uuid="{10686b35-1378-4cfe-a4a8-962a09c945c6}"/>
+  <LayoutObject>
+   <dataDefinedProperties>
+    <Option type="Map">
+     <Option value="" type="QString" name="name"/>
+     <Option name="properties"/>
+     <Option value="collection" type="QString" name="type"/>
+    </Option>
+   </dataDefinedProperties>
+   <customproperties/>
+  </LayoutObject>
+ </LayoutMultiFrame>
+ <LayoutMultiFrame contentMode="1" url="" type="65648" stylesheet="" resizeMode="0" useSmartBreaks="true" templateUuid="{8668b869-5ed5-4cc4-b7c5-db8156cfe18e}" evaluateExpressions="true" html="Path name: [%  &quot;pathname&quot; %]&lt;br>&#xa;Layer name: [%  &quot;layername&quot; %]&lt;br>&#xa;Description: [%  &quot;description&quot; %]&lt;br>" uuid="{8668b869-5ed5-4cc4-b7c5-db8156cfe18e}" stylesheetEnabled="false" maxBreakDistance="10">
+  <childFrame templateUuid="{614f4813-e040-4682-9f07-df1ed1b8d293}" uuid="{614f4813-e040-4682-9f07-df1ed1b8d293}"/>
+  <LayoutObject>
+   <dataDefinedProperties>
+    <Option type="Map">
+     <Option value="" type="QString" name="name"/>
+     <Option name="properties"/>
+     <Option value="collection" type="QString" name="type"/>
+    </Option>
+   </dataDefinedProperties>
+   <customproperties/>
+  </LayoutObject>
+ </LayoutMultiFrame>
+ <customproperties>
+  <property value="png" key="atlasRasterFormat"/>
+ </customproperties>
+ <Atlas filenamePattern="'output_'||@atlas_featurenumber" hideCoverage="0" pageNameExpression=" &quot;code&quot;   ||  if( &quot;description&quot;, ' -  '||  &quot;description&quot;, '')" coverageLayer="codification_e1960667_0aaa_4188_888c_0a1cde245097" sortFeatures="0" coverageLayerProvider="delimitedtext" enabled="1" filterFeatures="1" coverageLayerName="codification" featureFilter=" &quot;internaltype&quot;  NOT IN ( 'ParameterSeparator' , 'CodeSeparator' , 'ErrorPoints' , 'AllPoints' )" coverageLayerSource="file:///home/lbartoletti/prog/Oslandia/landsurveycodesimport/processing/export/codificationLayoutTemplate/codification.csv?type=csv&amp;delimiter=%5Ct&amp;detectTypes=yes&amp;geomType=none&amp;subsetIndex=no&amp;watchFile=yes"/>
+</Layout>
