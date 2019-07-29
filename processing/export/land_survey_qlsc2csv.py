@@ -37,6 +37,7 @@ from PyQt5.QtCore import QCoreApplication
 from qgis.core import (QgsProcessing,
                        QgsProcessingAlgorithm,
                        QgsProcessingParameterFile,
+                       QgsProcessingParameterBoolean,
                        QgsProcessingParameterFileDestination,
                        QgsVectorLayer, QgsWkbTypes)
 
@@ -77,18 +78,44 @@ class landsurveyQLSC2CSV(QgsProcessingAlgorithm):
         l = QgsVectorLayer(layersource)
         return QgsWkbTypes.geometryDisplayString(l.geometryType())
 
-    def qlsc2csv(self, qlsc_path, csv_path):
+    def qlsc2csv(self, qlsc_path, csv_path, parameters):
         with open(qlsc_path, 'r') as stream:
             code = yaml.full_load(stream)
             # include verif
             codif = code['Codification']
             with open(csv_path, 'w') as csv_file:
                 csv_writer = csv.writer(csv_file, dialect='excel-tab')
-                csv_writer.writerow(['code', 'source', 'pathname', 'dirname', 'basename', 'layername', 'internaltype', 'displaytype', 'geometrytype', 'description', 'attributes'])
+                row = ['code']
+                for p in ['source', 'pathname', 'dirname', 'basename', 'layername', 'internaltype', 'displaytype', 'geometrytype', 'description', 'attributes']:
+                    if parameters[p]:
+                        row.append(p)
+                csv_writer.writerow(row)
                 for k in codif.keys():
                     codification = codif[k]
-                    csv_writer.writerow([k, codification['Layer'], *(self.__explodeSource(codification['Layer'])), codification['GeometryType'], translatedNameFromGeometryType(codification['GeometryType']), self.__geometryFromSource(codification['Layer']), codification['Description'], codification['Attributes'] ] )
-
+                    row = [k]
+                    if parameters['source']:
+                        row.append(codification['Layer'])
+                        
+                    pathname, dirname, basename, layername = self.__explodeSource(codification['Layer'])
+                    if parameters['pathname']:
+                        row.append(pathname)
+                    if parameters['dirname']:
+                        row.append(dirname)
+                    if parameters['basename']:
+                        row.append(basename)
+                    if parameters['layername']:
+                        row.append(layername)
+                    if parameters['internaltype']:
+                        row.append(codification['GeometryType'])
+                    if parameters['displaytype']:
+                        row.append(translatedNameFromGeometryType(codification['GeometryType']))
+                    if parameters['geometrytype']:
+                        row.append(self.__geometryFromSource(codification['Layer']))
+                    if parameters['description']:
+                        row.append(codification['Description'])
+                    if parameters['attributes']:               
+                        row.append(codification['Attributes'])
+                    csv_writer.writerow(row)
 
                 # special points
                 param = code['AllPoints']
@@ -123,6 +150,16 @@ class landsurveyQLSC2CSV(QgsProcessingAlgorithm):
                 fileFilter='csv'
             )
         )
+        self.addParameter(QgsProcessingParameterBoolean('source', 'source', defaultValue=False, optional=True))
+        self.addParameter(QgsProcessingParameterBoolean('pathname', 'pathname', defaultValue=False, optional=True))
+        self.addParameter(QgsProcessingParameterBoolean('dirname', 'dirname', defaultValue=False, optional=True))
+        self.addParameter(QgsProcessingParameterBoolean('basename', 'basename', defaultValue=False, optional=True))
+        self.addParameter(QgsProcessingParameterBoolean('layername', 'layername', defaultValue=False, optional=True))
+        self.addParameter(QgsProcessingParameterBoolean('internaltype', 'internaltype', defaultValue=False, optional=True))
+        self.addParameter(QgsProcessingParameterBoolean('displaytype', 'displaytype', defaultValue=False, optional=True))
+        self.addParameter(QgsProcessingParameterBoolean('geometrytype', 'geometrytype', defaultValue=False, optional=True))
+        self.addParameter(QgsProcessingParameterBoolean('description', 'description', defaultValue=False, optional=True))
+        self.addParameter(QgsProcessingParameterBoolean('attributes', 'attributes', defaultValue=False, optional=True))
 
     def processAlgorithm(self, parameters, context, feedback):
         """
@@ -131,7 +168,7 @@ class landsurveyQLSC2CSV(QgsProcessingAlgorithm):
         qlscfile = self.parameterAsFile(parameters, self.QLSC, context)
         csvfile = self.parameterAsFile(parameters, self.OUTPUT, context)
 
-        self.qlsc2csv(qlscfile, csvfile)
+        self.qlsc2csv(qlscfile, csvfile, parameters)
         
         ret = dict()
         ret['OUTPUT'] = csvfile
