@@ -30,6 +30,10 @@ from qgis.core import (QgsPoint, QgsCircle, QgsGeometry, QgsRegularPolygon, QgsQ
 from PyQt5.QtCore import QVariant
 import csv
 import yaml
+try:
+    yaml_load = yaml.full_load
+except:
+    yaml_load = yaml.load
 
 from land_survey_field_codes_available_code import AVAILABLE_CODE
 
@@ -653,7 +657,7 @@ def verifyCodification(code_file):
 def landsurveyImport(FILE, QLSC):
     codesList = []
     with open(QLSC, 'r') as stream:
-        code = yaml.full_load(stream)
+        code = yaml_load(stream)
         verifyCodification(code)
         codesList = code['Codification'].keys()
 

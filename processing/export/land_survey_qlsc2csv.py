@@ -29,9 +29,14 @@ __copyright__ = '(C) 2019 by Loïc Bartoletti'
 
 __revision__ = '$Format:%H$'
 
-import yaml
 import csv
 import os
+
+import yaml
+try:
+    yaml_load = yaml.full_load
+except:
+    yaml_load = yaml.load
 
 from PyQt5.QtCore import QCoreApplication
 from qgis.core import (QgsProcessing,
@@ -80,7 +85,7 @@ class landsurveyQLSC2CSV(QgsProcessingAlgorithm):
 
     def qlsc2csv(self, qlsc_path, csv_path, parameters):
         with open(qlsc_path, 'r') as stream:
-            code = yaml.full_load(stream)
+            code = yaml_load(stream)
             # include verif
             codif = code['Codification']
             with open(csv_path, 'w') as csv_file:
