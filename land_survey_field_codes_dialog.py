@@ -394,7 +394,7 @@ class LandSurveyFieldCodesDialog(QtWidgets.QMainWindow, FORM_CLASS):
             layers = self.__getLayersFromProject()
             exclude = [s for s in layers if
                        self.__getPath(s.publicSource()) !=
-                       gpkg]
+                       gpkg.replace('\\', '/')]
 
             comboLayers.setExceptedLayerList(exclude)
             comboLayers.setEnabled(True)
