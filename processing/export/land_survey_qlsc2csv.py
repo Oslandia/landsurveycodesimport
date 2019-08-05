@@ -89,7 +89,7 @@ class landsurveyQLSC2CSV(QgsProcessingAlgorithm):
             # include verif
             codif = code['Codification']
             with open(csv_path, 'w') as csv_file:
-                csv_writer = csv.writer(csv_file, dialect='excel-tab')
+                csv_writer = csv.writer(csv_file, dialect='excel-tab', lineterminator="\n")
                 row = ['code']
                 for p in ['source', 'pathname', 'dirname', 'basename', 'layername', 'internaltype', 'displaytype', 'geometrytype', 'description', 'attributes']:
                     if parameters[p]:
