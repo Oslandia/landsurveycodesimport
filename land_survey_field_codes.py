@@ -41,6 +41,8 @@ cmd_folder = os.path.split(inspect.getfile(inspect.currentframe()))[0]
 if cmd_folder not in sys.path:
     sys.path.insert(0, cmd_folder)
 
+import os
+import ast
 
 class LandSurveyFieldCodes:
     """QGIS Plugin Implementation."""
@@ -53,6 +55,8 @@ class LandSurveyFieldCodes:
             application at run time.
         :type iface: QgsInterface
         """
+        
+        
         self.provider = landsurveyProvider()
         # Save reference to the QGIS interface
         self.iface = iface
@@ -80,6 +84,7 @@ class LandSurveyFieldCodes:
         # TODO: We are going to let the user set this up in a future iteration
         self.toolbar = self.iface.addToolBar(u'LandSurveyFieldCodes')
         self.toolbar.setObjectName(u'LandSurveyFieldCodes')
+
 
     # noinspection PyMethodMayBeStatic
     def tr(self, message):

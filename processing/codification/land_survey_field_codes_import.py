@@ -212,13 +212,25 @@ def geomFromType(points, parameters, geomtype, layerType):
 
         line = []
         arc = []
+        error = []
         arcBefore = False
         curve = QgsCompoundCurve()
         for i, p in enumerate(points):
             if parameters[i] != '3':
-                if len(arc) > 0:  # Arc haven't 3 points so points go in the straight line
+                if len(arc) > 0:  # Push arc and invalid point in line
                     # TODO : LOG
-                    line += arc
+                    while len(arc) != 3 and len(arc) > 3:
+                        a = arc.pop(0)
+                        b = arc.pop(0)
+                        c = arc[0]
+                        curve.addCurve(QgsCircularString(a, b, c))
+                    if len(arc) == 3:
+                        curve.addCurve(QgsCircularString(*arc))
+                        arc = []
+                    else:
+                        print("Points converted to line: ", arc)
+                        error += arc
+                        line += arc
                     arc = []
                 # The final point, is a single point and must be a linestring, so we take the last point
                 if (len(line) == 0 and i+1 == len(points)) or arcBefore:
@@ -232,22 +244,34 @@ def geomFromType(points, parameters, geomtype, layerType):
                     curve.addCurve(QgsLineString(line))
                     line = []
                 arc.append(QgsPoint(*[float(f) for f in p]))
-                if len(arc) == 3:
-                    curve.addCurve(QgsCircularString(*arc))
-                    arc = []
                 arcBefore = True
+
+        if arc:
+            while len(arc) != 3 and len(arc) > 3:
+                a = arc.pop(0)
+                b = arc.pop(0)
+                c = arc[0]
+                curve.addCurve(QgsCircularString(a, b, c))
+            if len(arc) == 3:
+                curve.addCurve(QgsCircularString(*arc))
+                arc = []
+            else:
+                print("Points converted to line: ", arc)
+                error += arc
+                line += arc
+            arc = []
 
         if line:  # Oh, only a linestring not yet parsed
             curve.addCurve(QgsLineString(line))
 
         if layerType == 1:
-            return (QgsGeometry(curve), arc)
+            return (QgsGeometry(curve), error)
         else:
             p = QgsCurvePolygon()
             curve.close()
             p.setExteriorRing(curve)
-            return (QgsGeometry(p), arc)
-        return (None, arc)
+            return (QgsGeometry(p), error)
+        return (None, error)
     elif (geomtype == "Point"):
         try:
             if layerType == 0:
