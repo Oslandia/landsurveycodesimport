@@ -155,16 +155,16 @@ class landsurveyQLSC2CSV(QgsProcessingAlgorithm):
                 fileFilter='csv'
             )
         )
-        self.addParameter(QgsProcessingParameterBoolean('source', 'source', defaultValue=False, optional=True))
-        self.addParameter(QgsProcessingParameterBoolean('pathname', 'pathname', defaultValue=False, optional=True))
-        self.addParameter(QgsProcessingParameterBoolean('dirname', 'dirname', defaultValue=False, optional=True))
-        self.addParameter(QgsProcessingParameterBoolean('basename', 'basename', defaultValue=False, optional=True))
-        self.addParameter(QgsProcessingParameterBoolean('layername', 'layername', defaultValue=False, optional=True))
-        self.addParameter(QgsProcessingParameterBoolean('internaltype', 'internaltype', defaultValue=False, optional=True))
-        self.addParameter(QgsProcessingParameterBoolean('displaytype', 'displaytype', defaultValue=False, optional=True))
-        self.addParameter(QgsProcessingParameterBoolean('geometrytype', 'geometrytype', defaultValue=False, optional=True))
-        self.addParameter(QgsProcessingParameterBoolean('description', 'description', defaultValue=False, optional=True))
-        self.addParameter(QgsProcessingParameterBoolean('attributes', 'attributes', defaultValue=False, optional=True))
+        self.addParameter(QgsProcessingParameterBoolean('source', 'source', defaultValue=True, optional=True))
+        self.addParameter(QgsProcessingParameterBoolean('pathname', 'pathname', defaultValue=True, optional=True))
+        self.addParameter(QgsProcessingParameterBoolean('dirname', 'dirname', defaultValue=True, optional=True))
+        self.addParameter(QgsProcessingParameterBoolean('basename', 'basename', defaultValue=True, optional=True))
+        self.addParameter(QgsProcessingParameterBoolean('layername', 'layername', defaultValue=True, optional=True))
+        self.addParameter(QgsProcessingParameterBoolean('internaltype', 'internaltype', defaultValue=True, optional=True))
+        self.addParameter(QgsProcessingParameterBoolean('displaytype', 'displaytype', defaultValue=True, optional=True))
+        self.addParameter(QgsProcessingParameterBoolean('geometrytype', 'geometrytype', defaultValue=True, optional=True))
+        self.addParameter(QgsProcessingParameterBoolean('description', 'description', defaultValue=True, optional=True))
+        self.addParameter(QgsProcessingParameterBoolean('attributes', 'attributes', defaultValue=True, optional=True))
 
     def processAlgorithm(self, parameters, context, feedback):
         """
