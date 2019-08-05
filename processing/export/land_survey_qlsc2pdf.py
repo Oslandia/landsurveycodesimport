@@ -59,7 +59,7 @@ class landsurveyQLSC2PDF(QgsProcessingAlgorithm):
         self.addParameter(QgsProcessingParameterFile('project', self.tr(
             'Template project'), behavior=QgsProcessingParameterFile.File, extension='qgz', defaultValue=None))
         self.addParameter(QgsProcessingParameterFileDestination(
-            'outputpdf', self.tr('Output PDF'), fileFilter='.pdf', defaultValue=None))
+            'outputpdf', self.tr('Output PDF'), fileFilter='*.pdf', defaultValue=None))
         self.addParameter(QgsProcessingParameterString('layout', self.tr('Layout name'), multiLine=False, defaultValue='simple'))
 
     def generatePDF(self, project_path, layout_name, report_path):

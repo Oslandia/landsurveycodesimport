@@ -152,7 +152,7 @@ class landsurveyQLSC2CSV(QgsProcessingAlgorithm):
             QgsProcessingParameterFileDestination(
                 self.OUTPUT,
                 self.tr('Output CSV'),
-                fileFilter='csv'
+                fileFilter='*.csv'
             )
         )
         self.addParameter(QgsProcessingParameterBoolean('source', 'source', defaultValue=True, optional=True))
