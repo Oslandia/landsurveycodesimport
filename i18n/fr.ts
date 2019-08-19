@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="fr_FR">
+<!DOCTYPE TS><TS version="2.0" language="fr_FR" sourcelanguage="">
 <context>
     <name>@default</name>
     <message>
@@ -62,17 +61,17 @@
 <context>
     <name>LandSurveyFieldCodes</name>
     <message>
-        <location filename="../land_survey_field_codes.py" line="176"/>
+        <location filename="../land_survey_field_codes.py" line="181"/>
         <source>Land Survey Codes Import</source>
         <translation>Codification topographique</translation>
     </message>
     <message>
-        <location filename="../land_survey_field_codes.py" line="195"/>
+        <location filename="../land_survey_field_codes.py" line="200"/>
         <source>&amp;Land Survey Codes Import</source>
         <translation>Codification &amp;topographique</translation>
     </message>
     <message>
-        <location filename="../land_survey_field_codes.py" line="183"/>
+        <location filename="../land_survey_field_codes.py" line="188"/>
         <source>&amp;Help</source>
         <translation>Aide</translation>
     </message>
@@ -292,125 +291,62 @@
 <context>
     <name>landsurveyQLSC2CSV</name>
     <message>
-        <location filename="../processing/export/land_survey_qlsc2csv.py" line="95"/>
+        <location filename="../processing/export/land_survey_qlsc2csv.py" line="127"/>
         <source>All points</source>
         <translation>Tous les points</translation>
     </message>
     <message>
-        <location filename="../processing/export/land_survey_qlsc2csv.py" line="95"/>
+        <location filename="../processing/export/land_survey_qlsc2csv.py" line="127"/>
         <source>Parameter for all points</source>
         <translation>Paramètre pour tous les points</translation>
     </message>
     <message>
-        <location filename="../processing/export/land_survey_qlsc2csv.py" line="97"/>
+        <location filename="../processing/export/land_survey_qlsc2csv.py" line="129"/>
         <source>Error points</source>
         <translation>Points en erreur</translation>
     </message>
     <message>
-        <location filename="../processing/export/land_survey_qlsc2csv.py" line="97"/>
+        <location filename="../processing/export/land_survey_qlsc2csv.py" line="129"/>
         <source>Parameter for error points</source>
         <translation>Paramètre pour les points en erreur</translation>
     </message>
     <message>
-        <location filename="../processing/export/land_survey_qlsc2csv.py" line="100"/>
+        <location filename="../processing/export/land_survey_qlsc2csv.py" line="132"/>
         <source>Code separator</source>
         <translation>Séparateur de code</translation>
     </message>
     <message>
-        <location filename="../processing/export/land_survey_qlsc2csv.py" line="100"/>
+        <location filename="../processing/export/land_survey_qlsc2csv.py" line="132"/>
         <source>Parameter for code separator</source>
         <translation>Paramètre pour le séparateur de code</translation>
     </message>
     <message>
-        <location filename="../processing/export/land_survey_qlsc2csv.py" line="102"/>
+        <location filename="../processing/export/land_survey_qlsc2csv.py" line="134"/>
         <source>Parameter separator</source>
         <translation>Séparateur de paramètre</translation>
     </message>
     <message>
-        <location filename="../processing/export/land_survey_qlsc2csv.py" line="102"/>
+        <location filename="../processing/export/land_survey_qlsc2csv.py" line="134"/>
         <source>Parameter for parameter separator</source>
         <translation>Paramètre pour le séparateur de paramètre</translation>
     </message>
     <message>
-        <location filename="../processing/export/land_survey_qlsc2csv.py" line="110"/>
+        <location filename="../processing/export/land_survey_qlsc2csv.py" line="142"/>
         <source>Codification file</source>
         <translation>Fichier de codification</translation>
     </message>
     <message>
-        <location filename="../processing/export/land_survey_qlsc2csv.py" line="119"/>
+        <location filename="../processing/export/land_survey_qlsc2csv.py" line="151"/>
         <source>Output CSV</source>
         <translation>CSV en sortie</translation>
     </message>
     <message>
-        <location filename="../processing/export/land_survey_qlsc2csv.py" line="156"/>
+        <location filename="../processing/export/land_survey_qlsc2csv.py" line="198"/>
         <source>Convert QLSC file to CSV file</source>
         <translation>Convertir un fichier QLSC en un fichier CSV</translation>
     </message>
     <message>
-        <location filename="../processing/export/land_survey_qlsc2csv.py" line="173"/>
-        <source>Export</source>
-        <translation>Exporter</translation>
-    </message>
-</context>
-<context>
-    <name>landsurveyQLSC2PDF</name>
-    <message>
-        <location filename="../processing/export/land_survey_qlsc2pdf.py" line="57"/>
-        <source>Codification file</source>
-        <translation>Fichier de codification</translation>
-    </message>
-    <message>
-        <location filename="../processing/export/land_survey_qlsc2pdf.py" line="59"/>
-        <source>Template project</source>
-        <translation>Projet modèle</translation>
-    </message>
-    <message>
-        <location filename="../processing/export/land_survey_qlsc2pdf.py" line="61"/>
-        <source>Output PDF</source>
-        <translation>PDF en sortie</translation>
-    </message>
-    <message>
-        <location filename="../processing/export/land_survey_qlsc2pdf.py" line="63"/>
-        <source>Layout name</source>
-        <translation>Name de la mise en page</translation>
-    </message>
-    <message>
-        <location filename="../processing/export/land_survey_qlsc2pdf.py" line="63"/>
-        <source>Cannot open the file &apos;{}&apos;</source>
-        <translation>Impossible d&apos;ouvrir le fichier &apos;{}&apos;</translation>
-    </message>
-    <message>
-        <location filename="../processing/export/land_survey_qlsc2pdf.py" line="63"/>
-        <source>Cannot find layout &apos;{}&apos;</source>
-        <translation>Impossible d&apos;ouvrir la mise en page &apos;{}&apos;</translation>
-    </message>
-    <message>
-        <location filename="../processing/export/land_survey_qlsc2pdf.py" line="63"/>
-        <source>Cannot export to pdf</source>
-        <translation>Impossible d&apos;exporter le pdf</translation>
-    </message>
-    <message>
-        <location filename="../processing/export/land_survey_qlsc2pdf.py" line="63"/>
-        <source>Unsaved project:</source>
-        <translation>Projet non sauvegardé:</translation>
-    </message>
-    <message>
-        <location filename="../processing/export/land_survey_qlsc2pdf.py" line="63"/>
-        <source>Save your works before run this algorithm</source>
-        <translation>Sauvegardez votre travail avant de lancer l&apos;algorithme</translation>
-    </message>
-    <message>
-        <location filename="../processing/export/land_survey_qlsc2pdf.py" line="63"/>
-        <source>Cannot print layout</source>
-        <translation>Impossible d&apos;imprimer la mise en page</translation>
-    </message>
-    <message>
-        <location filename="../processing/export/land_survey_qlsc2pdf.py" line="63"/>
-        <source>Convert QLSC file to PDF file</source>
-        <translation>Convertir un fichier QLSC en un fichier PDF</translation>
-    </message>
-    <message>
-        <location filename="../processing/export/land_survey_qlsc2pdf.py" line="63"/>
+        <location filename="../processing/export/land_survey_qlsc2csv.py" line="215"/>
         <source>Export</source>
         <translation>Exporter</translation>
     </message>
