@@ -153,12 +153,19 @@
 <div class="section" id="explanation-of-the-parameters">
 <h3>Explanation of the parameters<a class="headerlink" href="#explanation-of-the-parameters" title="Permalink to this headline">¶</a></h3>
 <p>[1] Means that the code must have a parameter and that it is of a numerical type. Example of the circle by a center and radius. You enter the center of the circle by a point whose code is 100 and you must enter the radius (in the projection unit) by adding the parameter character and the measurement, i.e. 100-1 for a circle with a radius of one meter.</p>
-<p>[2] a line is handled in a special way since it needs information indicating the opening and closing of the line, as well as changes of nature (arcs - not yet implemented). Taking as an example, a line with a code of 100, this line has 4 points must be filled in this way:</p>
+<p>[2] a line is handled in a special way since it needs information indicating the opening and closing of the line, as well as changes of nature (arcs). Taking as an example, a line with a code of 100, this line has 4 points must be filled in this way:</p>
 <ul class="simple">
 <li>1,…, 100-1</li>
 <li>2,…, 100-2</li>
 <li>3,…, 100-2</li>
 <li>4,…, 100-9</li>
+</ul>
+<p>For a line, parameters are:</p>
+<ul class="simple">
+<li>1: start a new line</li>
+<li>2: continue the line with a straigth segment</li>
+<li>3: add a point on an arc. You must have at least 3 points continuous with this parameter to get an arc by 3 points. You can take a look at <a class="reference external" href="https://github.com/Oslandia/landsurveycodesimport/blob/master/test/test_lines.csv">test_line.csv</a> for detailled example.</li>
+<li>9: end of the line.</li>
 </ul>
 </div>
 </div>

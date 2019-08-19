@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Land survey codes import 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-17 15:23+0200\n"
+"POT-Creation-Date: 2019-08-19 22:01+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgid "Welcome to Land survey codes import's documentation!"
 msgstr ""
 
 #: ../../source/index.rst:11
-#: ../../source/index.rst:119
+#: ../../source/index.rst:127
 msgid "General principle"
 msgstr ""
 
@@ -195,7 +195,7 @@ msgid "[1] Means that the code must have a parameter and that it is of a numeric
 msgstr ""
 
 #: ../../source/index.rst:50
-msgid "[2] a line is handled in a special way since it needs information indicating the opening and closing of the line, as well as changes of nature (arcs - not yet implemented). Taking as an example, a line with a code of 100, this line has 4 points must be filled in this way:"
+msgid "[2] a line is handled in a special way since it needs information indicating the opening and closing of the line, as well as changes of nature (arcs). Taking as an example, a line with a code of 100, this line has 4 points must be filled in this way:"
 msgstr ""
 
 #: ../../source/index.rst:52
@@ -214,193 +214,213 @@ msgstr ""
 msgid "4,..., 100-9"
 msgstr ""
 
+#: ../../source/index.rst:57
+msgid "For a line, parameters are:"
+msgstr ""
+
 #: ../../source/index.rst:59
-msgid "Creation of the codification"
+msgid "1: start a new line"
+msgstr ""
+
+#: ../../source/index.rst:60
+msgid "2: continue the line with a straigth segment"
 msgstr ""
 
 #: ../../source/index.rst:61
+msgid "3: add a point on an arc. You must have at least 3 points continuous with this parameter to get an arc by 3 points. You can take a look at `test_line.csv <https://github.com/Oslandia/landsurveycodesimport/blob/master/test/test_lines.csv>`_ for detailled example."
+msgstr ""
+
+#: ../../source/index.rst:62
+msgid "9: end of the line."
+msgstr ""
+
+#: ../../source/index.rst:67
+msgid "Creation of the codification"
+msgstr ""
+
+#: ../../source/index.rst:69
 msgid "The codification preparation cannot be done without first having opened a qgis project containing the layers in which the data will be inserted. For the times the layers must be in geopackages. There is no limit to the number of these geopackages. A good practice is to group the layers in thematic geopackages: water, sanitation, roads, etc. If the data is in a postgresql database, it is possible to export them in geopackages via the \"Package layers\" tool."
 msgstr ""
 
-#: ../../source/index.rst:66
+#: ../../source/index.rst:74
 msgid "By clicking on the icon |icon|, the codification configuration window appears."
 msgstr ""
 
-#: ../../source/index.rst:68
+#: ../../source/index.rst:76
 msgid "|codification|"
 msgstr ""
 
-#: ../../source/index.rst:72
+#: ../../source/index.rst:80
 msgid "General parameters"
 msgstr ""
 
-#: ../../source/index.rst:74
+#: ../../source/index.rst:82
 msgid "The general parameters define the separators used. A separator to indicate the different codes on the same point and a separator to indicate the parameters. These must be adapted according to the capacities of the field book."
 msgstr ""
 
-#: ../../source/index.rst:78
+#: ../../source/index.rst:86
 msgid "Codification"
 msgstr ""
 
-#: ../../source/index.rst:80
+#: ../../source/index.rst:88
 msgid "\"Code\" can be alphanumeric, no restriction is imposed, but it must be compatible with your device. It is preferable not to insert spaces or special characters"
 msgstr ""
 
-#: ../../source/index.rst:82
+#: ../../source/index.rst:90
 msgid "It is possible to add a comment on the code in the \"Description\" field."
 msgstr ""
 
-#: ../../source/index.rst:84
+#: ../../source/index.rst:92
 msgid "The \"Geometry\" is to be chosen from the one indicated above. It is filtered on the geometry of the \"Output Layer\" from the \"GeoPackage\" selected below."
 msgstr ""
 
-#: ../../source/index.rst:88
+#: ../../source/index.rst:96
 msgid "Attributes"
 msgstr ""
 
-#: ../../source/index.rst:90
+#: ../../source/index.rst:98
 msgid "You can automatically generate attributes in the layer columns using the same principles as the QGIS expression calculator. Attention, however, this one does not have vocation to accept complex requests, it is preferable to carry out this stage after the import of the data."
 msgstr ""
 
-#: ../../source/index.rst:93
+#: ../../source/index.rst:101
 msgid "If the exported data from the logbook has additional attributes, it is possible to integrate them by specifying in the expression field'_attN' where N corresponds to the field number (starting with 1). There is no limitation on attributes as long as the CSV file is compliant."
 msgstr ""
 
-#: ../../source/index.rst:97
+#: ../../source/index.rst:105
 msgid "Special points"
 msgstr ""
 
-#: ../../source/index.rst:99
+#: ../../source/index.rst:107
 msgid "Error points can be added in a particular layer as well as all points recorded."
 msgstr ""
 
-#: ../../source/index.rst:101
+#: ../../source/index.rst:109
 msgid "Items that do not conform to the coding rule, e.g. code with 3 points and only 2 points, etc., are called error."
 msgstr ""
 
-#: ../../source/index.rst:105
+#: ../../source/index.rst:113
 msgid "Open / Save"
 msgstr ""
 
-#: ../../source/index.rst:107
+#: ../../source/index.rst:115
 msgid "The File menu allows opening, closing, saving, etc. of the codification."
 msgstr ""
 
-#: ../../source/index.rst:109
+#: ../../source/index.rst:117
 msgid "The codification is saved in a YAML format whose extension is.qlsc"
 msgstr ""
 
-#: ../../source/index.rst:111
+#: ../../source/index.rst:119
 msgid "|yaml|"
 msgstr ""
 
-#: ../../source/index.rst:115
+#: ../../source/index.rst:123
 msgid "Points import"
 msgstr ""
 
-#: ../../source/index.rst:121
+#: ../../source/index.rst:129
 msgid "For now, the tool only allows CSV files to be read, so the operator must export his data in CSV format in this order: Point identifier, x coordinate, y coordinate, z coordinate, code, attribute 1, attribute 2,..., attribute N"
 msgstr ""
 
-#: ../../source/index.rst:124
+#: ../../source/index.rst:132
 msgid "|csv|"
 msgstr ""
 
-#: ../../source/index.rst:126
+#: ../../source/index.rst:134
 msgid "The tool will separate the codes that are on the same point, and then match them according to their code. For example a csv like:"
 msgstr ""
 
-#: ../../source/index.rst:130
+#: ../../source/index.rst:138
 msgid "'2', '1980244.900', '5190520.938', '1002.461', '300+200'"
 msgstr ""
 
-#: ../../source/index.rst:132
-#: ../../source/index.rst:143
+#: ../../source/index.rst:140
 #: ../../source/index.rst:151
+#: ../../source/index.rst:159
 msgid "'3', '1980249.438', '5190515.953', '1002.329', '101'"
 msgstr ""
 
-#: ../../source/index.rst:134
+#: ../../source/index.rst:142
 msgid "'1', '1980242.941', '5190519.460', '1002.521', '200+300'"
 msgstr ""
 
-#: ../../source/index.rst:137
+#: ../../source/index.rst:145
 msgid "will be transformed into:"
 msgstr ""
 
-#: ../../source/index.rst:139
-#: ../../source/index.rst:157
+#: ../../source/index.rst:147
+#: ../../source/index.rst:165
 msgid "'2', '1980244.900', '5190520.938', '1002.461', '300'"
 msgstr ""
 
-#: ../../source/index.rst:141
-#: ../../source/index.rst:153
+#: ../../source/index.rst:149
+#: ../../source/index.rst:161
 msgid "'2', '1980244.900', '5190520.938', '1002.461', '200'"
 msgstr ""
 
-#: ../../source/index.rst:145
-#: ../../source/index.rst:155
+#: ../../source/index.rst:153
+#: ../../source/index.rst:163
 msgid "'1', '1980242.941', '5190519.460', '1002.521', '200'"
 msgstr ""
 
-#: ../../source/index.rst:147
-#: ../../source/index.rst:159
+#: ../../source/index.rst:155
+#: ../../source/index.rst:167
 msgid "'1', '1980242.941', '5190519.460', '1002.521', '300'"
 msgstr ""
 
-#: ../../source/index.rst:149
+#: ../../source/index.rst:157
 msgid "and then:"
 msgstr ""
 
-#: ../../source/index.rst:162
+#: ../../source/index.rst:170
 msgid "The tool will process the codes in queue, special attention is requested to the operator entering the codes because an input error will delay the coding and the resulting drawing."
 msgstr ""
 
-#: ../../source/index.rst:166
+#: ../../source/index.rst:174
 msgid "Processing import"
 msgstr ""
 
-#: ../../source/index.rst:168
+#: ../../source/index.rst:176
 msgid "|processing|"
 msgstr ""
 
-#: ../../source/index.rst:170
+#: ../../source/index.rst:178
 msgid "The import is done via a new module in the processing."
 msgstr ""
 
-#: ../../source/index.rst:172
+#: ../../source/index.rst:180
 msgid "The tool asks for the configuration file (.qlsc file) and the points file (.csv)"
 msgstr ""
 
-#: ../../source/index.rst:174
+#: ../../source/index.rst:182
 msgid "|processing1|"
 msgstr ""
 
-#: ../../source/index.rst:178
+#: ../../source/index.rst:186
 msgid "Result"
 msgstr ""
 
-#: ../../source/index.rst:180
+#: ../../source/index.rst:188
 msgid "At the end of the import, you have to refresh the canvas to see the drawing. The data is obviously displayed with the style determined in the project."
 msgstr ""
 
-#: ../../source/index.rst:182
+#: ../../source/index.rst:190
 msgid "|result|"
 msgstr ""
 
-#: ../../source/index.rst:190
+#: ../../source/index.rst:198
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../source/index.rst:192
+#: ../../source/index.rst:200
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../source/index.rst:193
+#: ../../source/index.rst:201
 msgid ":ref:`modindex`"
 msgstr ""
 
-#: ../../source/index.rst:194
+#: ../../source/index.rst:202
 msgid ":ref:`search`"
 msgstr ""
 

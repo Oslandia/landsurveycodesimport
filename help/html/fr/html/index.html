@@ -154,12 +154,19 @@
 <div class="section" id="explanation-of-the-parameters">
 <h3>Explication sur les paramètres<a class="headerlink" href="#explanation-of-the-parameters" title="Lien permanent vers ce titre">¶</a></h3>
 <p>Signifie que le code doit avoir un paramètre et que celui-ci est de type numérique. Exemple du cercle par un centre et le rayon. Vous renseignez le centre du cercle par un point dont le code est 100 et vous devez renseigner le rayon (dans l’unité de la projection) en accolant le caractère de paramètre et la mesure, soit 100-1 pour un cercle d’un mètre de rayon.</p>
-<p>[2] une ligne est traité de façon spéciale puisqu’elle a besoin d’une information indiquant l’ouverture et la fermeture de la ligne, ainsi que des changements de nature (arcs - non implémenté pour le moment). En prenant pour exemple, une ligne avec un code de 100, cette ligne a 4 points doit être renseignée de cette façon :</p>
+<p>[2] une ligne est traité de façon spéciale puisqu’elle a besoin d’une information indiquant l’ouverture et la fermeture de la ligne, ainsi que des changements de nature (arcs). En prenant pour exemple, une ligne avec un code de 100, cette ligne a 4 points doit être renseignée de cette façon :</p>
 <ul class="simple">
 <li>1,…, 100-1</li>
 <li>2,…, 100-2</li>
 <li>3,…, 100-2</li>
 <li>4,…, 100-9</li>
+</ul>
+<p>Pour une ligne, les paramètres sont:</p>
+<ul class="simple">
+<li>1: commencer une nouvelle ligne</li>
+<li>2: continuer la ligne avec un segment de droite</li>
+<li>3: ajouter un point sur un arc. Vous devez avoir au moins 3 points continues avec ce paramètre pour obtenir un arc par 3 points. Vous pouvez prendre pour exemple <a class="reference external" href="https://github.com/Oslandia/landsurveycodesimport/blob/master/test/test_lines.csv">test_line.csv</a> for detailled example.</li>
+<li>9: terminer la ligne.</li>
 </ul>
 </div>
 </div>

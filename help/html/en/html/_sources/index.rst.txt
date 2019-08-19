@@ -47,12 +47,20 @@ Explanation of the parameters
 
 [1] Means that the code must have a parameter and that it is of a numerical type. Example of the circle by a center and radius. You enter the center of the circle by a point whose code is 100 and you must enter the radius (in the projection unit) by adding the parameter character and the measurement, i.e. 100-1 for a circle with a radius of one meter.
 
-[2] a line is handled in a special way since it needs information indicating the opening and closing of the line, as well as changes of nature (arcs - not yet implemented). Taking as an example, a line with a code of 100, this line has 4 points must be filled in this way:
+[2] a line is handled in a special way since it needs information indicating the opening and closing of the line, as well as changes of nature (arcs). Taking as an example, a line with a code of 100, this line has 4 points must be filled in this way:
 
 - 1,..., 100-1
 - 2,..., 100-2
 - 3,..., 100-2
 - 4,..., 100-9
+
+For a line, parameters are:
+
+- 1: start a new line
+- 2: continue the line with a straigth segment
+- 3: add a point on an arc. You must have at least 3 points continuous with this parameter to get an arc by 3 points. You can take a look at `test_line.csv <https://github.com/Oslandia/landsurveycodesimport/blob/master/test/test_lines.csv>`_ for detailled example.
+- 9: end of the line.
+
 
 ****************************
 Creation of the codification
