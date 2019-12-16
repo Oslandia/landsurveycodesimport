@@ -32,7 +32,7 @@ __revision__ = '$Format:%H$'
 from qgis.core import QgsProcessingProvider
 from .processing.codification.land_survey_algorithm import landsurveyAlgorithm
 from .processing.export.land_survey_qlsc2csv import landsurveyQLSC2CSV
-#from .processing.export.land_survey_qlsc2pdf import landsurveyQLSC2PDF
+from .processing.export.land_survey_qlsc2pdf import landsurveyQLSC2PDF
 from .processing.import_.trimble.land_survey_jxl2csv import landsurveyJXL2CSV
 
 
@@ -53,7 +53,7 @@ class landsurveyProvider(QgsProcessingProvider):
         Loads all algorithms belonging to this provider.
         """
         self.addAlgorithm(landsurveyAlgorithm())
- #       self.addAlgorithm(landsurveyQLSC2PDF())
+        self.addAlgorithm(landsurveyQLSC2PDF())
         self.addAlgorithm(landsurveyQLSC2CSV())
         self.addAlgorithm(landsurveyJXL2CSV())
 
