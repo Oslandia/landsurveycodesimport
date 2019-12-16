@@ -117,10 +117,19 @@ class landsurveyQLSC2PDF(QgsProcessingAlgorithm):
             shutil.copyfile(parameters['project'], project_path)
             shutil.copyfile(os.path.join(os.path.dirname(
                 parameters['project']), 'logo.svg'), os.path.join(tmpdirname, 'logo.svg'))
-
             alg_params={
                 'QLSC': parameters['qlsc'],
-                'OUTPUT': csv_path
+                'OUTPUT': csv_path,
+                'source':True,
+                'pathname':True,
+                'dirname':True,
+                'basename':True,
+                'layername':True,
+                'internaltype':True,
+                'displaytype':True,
+                'geometrytype':True,
+                'description':True,
+                'attributes':True
             }
             outputs['ConvertQlscFileToCsvFile']=processing.run(
                 'landsurvey:qlsc2csv', alg_params, context=context, feedback=feedback, is_child_algorithm=True)

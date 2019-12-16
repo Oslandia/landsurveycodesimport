@@ -10,7 +10,7 @@
 name=Land Survey Codes Import
 qgisMinimumVersion=3.6
 description=This plugin allows you to easily import data from a land survey (GPS or total station) to draw automatically in a database using a codification (aka Field Codes).
-version=0.2.0
+version=0.2.1
 author=Loïc Bartoletti (Oslandia)
 email=loic.bartoletti@oslandia.com
 
@@ -24,14 +24,14 @@ repository=https://github.com/oslandia/landsurveycodesimport
 
 # Uncomment the following line and add your changelog:
 changelog=
-0.2.0
-	- Add support to arc for line
-	- Add support to rectangle/square => Minimal version is now QGIS 3.6
-	- Import Trimble JobXML to LandSurveyCodesImport csv
-	- Export LandSurveyCodesImport codification file (.qlsc) to csv
-0.1.1
-	- Fix incorrect ownership of algorithms in processing provider
-	- Remove experimental flag
+  0.2.0
+    - Add support to arc for line
+    - Add support to rectangle/square => Minimal version is now QGIS 3.6
+    - Import Trimble JobXML to LandSurveyCodesImport csv
+    - Export LandSurveyCodesImport codification file (.qlsc) to csv
+  0.1.1
+    - Fix incorrect ownership of algorithms in processing provider
+    - Remove experimental flag
 
 # Tags are comma separated with spaces allowed
 tags=cad, database, circle, export, field, geocoding, geometry, point, polygon, polyline, processing, rectangle, vector, topography, land, survey, GPS, import

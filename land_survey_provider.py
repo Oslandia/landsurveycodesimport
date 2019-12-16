@@ -53,7 +53,7 @@ class landsurveyProvider(QgsProcessingProvider):
         Loads all algorithms belonging to this provider.
         """
         self.addAlgorithm(landsurveyAlgorithm())
- #       self.addAlgorithm(landsurveyQLSC2PDF())
+        self.addAlgorithm(landsurveyQLSC2PDF())
         self.addAlgorithm(landsurveyQLSC2CSV())
         self.addAlgorithm(landsurveyJXL2CSV())
 
