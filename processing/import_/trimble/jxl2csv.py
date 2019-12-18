@@ -4,7 +4,7 @@ import csv
 import argparse
 import os
 
-def jxl2csv(jxl_path, csv_path, isReduction=True):
+def jxl2csv(jxl_path, csv_path, isReduction=True, exportDeleted=False):
     e = ElementTree.parse(jxl_path).getroot()
 
     header = ["#name", "grid_east", "grid_north", "grid_elevation", "code", "description1", "description2", "fieldbook_id", "surveymethod", "classification", "wgs84_latitude", "wgs84_longitude", "wgs84_height", "local_latitude", "local_longitude", "local_height"] # TODO: "features", "customxmlsubrecord", "layer"
@@ -40,8 +40,10 @@ def jxl2csv(jxl_path, csv_path, isReduction=True):
         points = 'Reductions/Point' if isReduction else '*/PointRecord'
         for point in e.findall(points):
             row = []
-            row.append(addElementToList(point, 'Name'))
+            if not isReduction and not exportDeleted and point.find('Deleted').text != 'false':
+                continue
 
+            row.append(addElementToList(point, 'Name'))
             grid = point.find('Grid') if isReduction else point.find('ComputedGrid')
             if grid: # X/Y!!!
                 row.append(grid.find('East').text)
@@ -97,7 +99,6 @@ def jxl2csv(jxl_path, csv_path, isReduction=True):
                                'VerticalStandardDeviation'):
                         row.append(addElementToList(qualityControl1, qc))
                 else:
-                    print("arg 1")
                     row += [''] * len(qc1)
 
                 qualityControl2 = point.find('QualityControl2')
@@ -106,7 +107,6 @@ def jxl2csv(jxl_path, csv_path, isReduction=True):
                                'VCVxy', 'VCVxz', 'VCVyy', 'VCVyz', 'VCVzz'):
                         row.append(addElementToList(qualityControl2, qc))
                 else:
-                    print("arg 2")
                     row += [''] * len(qc2)
 
             csv_writer.writerow(row)
@@ -141,6 +141,11 @@ if __name__ == "__main__":
     parser.add_argument('--no-reduction', dest='reduction', action='store_false',
                         help="Use only FieldBook fields (all -especially precisions' -fields and all points even deleted)")
     parser.set_defaults(reduction=True)
+    parser.add_argument('--export-deleted', dest='exportdeleted', action='store_true',
+                        help='Export deleted points')
+    parser.add_argument('--no-export-deleted', dest='exportdeleted', action='store_false',
+                        help="Don't export deleted points")
+    parser.set_defaults(exportdeleted=False)
 
     args = parser.parse_args()
 
@@ -152,4 +157,4 @@ if __name__ == "__main__":
         print("Cannot open file {}".format(args.csv_path))
         exit(1)
 
-    jxl2csv(args.jxl_path, args.csv_path, args.reduction)
+    jxl2csv(args.jxl_path, args.csv_path, args.reduction, args.exportdeleted)

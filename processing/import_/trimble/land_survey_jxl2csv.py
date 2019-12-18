@@ -33,7 +33,8 @@ from PyQt5.QtCore import QCoreApplication
 from qgis.core import (QgsProcessing,
                        QgsProcessingAlgorithm,
                        QgsProcessingParameterFile,
-                       QgsProcessingParameterFileDestination)
+                       QgsProcessingParameterFileDestination,
+                       QgsProcessingParameterBoolean)
 
 from .jxl2csv import jxl2csv
 
@@ -57,6 +58,8 @@ class landsurveyJXL2CSV(QgsProcessingAlgorithm):
 
     JXL = 'JXL'
     OUTPUT = 'OUTPUT'
+    ISREDUCTION = 'ISREDUCTION'
+    EXPORTDELETED = 'EXPORTDELETED'
 
     def initAlgorithm(self, config):
         """
@@ -80,15 +83,32 @@ class landsurveyJXL2CSV(QgsProcessingAlgorithm):
             )
         )
 
+        self.addParameter(
+            QgsProcessingParameterBoolean(
+                self.ISREDUCTION,
+                self.tr('Use only Reductions fields?'),
+                True
+            )
+        )
+
+        self.addParameter(
+            QgsProcessingParameterBoolean(
+                self.EXPORTDELETED,
+                self.tr('Export also deleted points (only available when Reductions is false'),
+                False
+            )
+        )
     def processAlgorithm(self, parameters, context, feedback):
         """
         Here is where the processing itself takes place.
         """
         jxlfile = self.parameterAsFile(parameters, self.JXL, context)
         csvfile = self.parameterAsFile(parameters, self.OUTPUT, context)
+        isreduction = self.parameterAsBoolean(parameters, self.ISREDUCTION, context)
+        exportdeleted = self.parameterAsBoolean(parameters, self.EXPORTDELETED, context)
 
-        jxl2csv(jxlfile, csvfile)
-        
+        jxl2csv(jxlfile, csvfile, isreduction, exportdeleted)
+
         ret = dict()
         ret['OUTPUT'] = csvfile
         ret['JXL'] = jxlfile
