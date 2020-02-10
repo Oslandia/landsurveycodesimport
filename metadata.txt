@@ -24,6 +24,9 @@ repository=https://github.com/oslandia/landsurveycodesimport
 
 # Uncomment the following line and add your changelog:
 changelog=
+  0.2.1
+    - Export LandSurveyCodesImport codification file (.qlsc) to PDF
+    - Improve Trimble JobXML to csv (Use all fields, can export deleted points)
   0.2.0
     - Add support to arc for line
     - Add support to rectangle/square => Minimal version is now QGIS 3.6
